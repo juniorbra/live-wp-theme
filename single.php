@@ -23,8 +23,6 @@ $post_type = get_post_type();
                     <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
                     <?php if ( $post_type === 'noticias' ) : ?>
                         <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Noticias</a></li>
-                    <?php elseif ( $post_type === 'estudos_de_caso' ) : ?>
-                        <li><a href="<?php echo esc_url( home_url( '/artigos-cases' ) ); ?>">Artigos</a></li>
                     <?php elseif ( $post_type === 'servicos' ) : ?>
                         <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Servicos</a></li>
                     <?php else : ?>
@@ -77,49 +75,6 @@ $post_type = get_post_type();
         <article class="single-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
             <?php
-            // Campos ACF para Artigos (Cases)
-            if ( $post_type === 'estudos_de_caso' && function_exists( 'get_field' ) ) :
-                $conflito     = get_field( 'case_conflito' );
-                $metodologia  = get_field( 'case_metodologia' );
-                $resultado    = get_field( 'case_resultado' );
-                $metrica      = get_field( 'case_metrica_destaque' );
-                $setor        = get_field( 'case_setor' );
-            ?>
-            <div class="case-detail">
-                <?php if ( $setor ) : ?>
-                    <span class="case-card__tag"><?php echo esc_html( $setor ); ?></span>
-                <?php endif; ?>
-
-                <?php if ( $conflito ) : ?>
-                <div class="case-step">
-                    <h2 class="case-step__label">O Conflito</h2>
-                    <p><?php echo wp_kses_post( $conflito ); ?></p>
-                </div>
-                <?php endif; ?>
-
-                <?php if ( $metodologia ) : ?>
-                <div class="case-step">
-                    <h2 class="case-step__label">A Investigacao / Metodologia</h2>
-                    <p><?php echo wp_kses_post( $metodologia ); ?></p>
-                </div>
-                <?php endif; ?>
-
-                <?php if ( $resultado ) : ?>
-                <div class="case-step">
-                    <h2 class="case-step__label">O Desfecho</h2>
-                    <p><?php echo wp_kses_post( $resultado ); ?></p>
-                </div>
-                <?php endif; ?>
-
-                <?php if ( $metrica ) : ?>
-                <div class="case-metric-highlight" aria-label="Metrica de destaque">
-                    <?php echo esc_html( $metrica ); ?>
-                </div>
-                <?php endif; ?>
-            </div>
-            <?php
-            endif;
-
             // Campos ACF para Servicos
             if ( $post_type === 'servicos' && function_exists( 'get_field' ) ) :
                 $metodologia   = get_field( 'servico_metodologia' );

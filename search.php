@@ -54,11 +54,10 @@ $found_posts  = $GLOBALS['wp_query']->found_posts;
                     <div class="search-result__type">
                         <?php
                         $type_labels = [
-                            'post'            => 'Artigo',
-                            'page'            => 'Pagina',
-                            'noticias'        => 'Noticia',
-                            'servicos'        => 'Servico',
-                            'estudos_de_caso' => 'Artigo',
+                            'post'     => 'Artigo',
+                            'page'     => 'Pagina',
+                            'noticias' => 'Noticia',
+                            'servicos' => 'Servico',
                         ];
                         $pt = get_post_type();
                         echo esc_html( $type_labels[ $pt ] ?? ucfirst( $pt ) );
@@ -103,7 +102,6 @@ $found_posts  = $GLOBALS['wp_query']->found_posts;
                 <p>Verifique a ortografia ou tente termos mais gerais. Voce tambem pode explorar nossas areas de atuacao:</p>
                 <ul class="no-results__suggestions">
                     <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Servicos</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/artigos-cases' ) ); ?>">Artigos</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Noticias</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/artigos' ) ); ?>">Artigos</a></li>
                 </ul>

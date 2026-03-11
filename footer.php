@@ -42,7 +42,6 @@
                             <li><a href="' . esc_url( home_url( '/clientes' ) ) . '">Clientes</a></li>
                             <li><a href="' . esc_url( home_url( '/noticias' ) ) . '">Noticias</a></li>
                             <li><a href="' . esc_url( home_url( '/artigos' ) ) . '">Artigos</a></li>
-                            <li><a href="' . esc_url( home_url( '/artigos-cases' ) ) . '">Artigos</a></li>
                         </ul>';
                     },
                 ] );

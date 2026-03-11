@@ -145,25 +145,6 @@ function alianca_register_cpts() {
         'rewrite'             => [ 'slug' => 'noticias' ],
     ] );
 
-    // --- Artigos (Cases) ---
-    register_post_type( 'estudos_de_caso', [
-        'label'               => __( 'Artigos', 'alianca' ),
-        'labels'              => [
-            'name'               => __( 'Artigos', 'alianca' ),
-            'singular_name'      => __( 'Artigo', 'alianca' ),
-            'add_new_item'       => __( 'Adicionar Artigo', 'alianca' ),
-            'edit_item'          => __( 'Editar Artigo', 'alianca' ),
-            'all_items'          => __( 'Todos os Artigos', 'alianca' ),
-            'menu_name'          => __( 'Artigos', 'alianca' ),
-        ],
-        'public'              => true,
-        'has_archive'         => true,
-        'show_in_rest'        => true,
-        'menu_icon'           => 'dashicons-portfolio',
-        'menu_position'       => 7,
-        'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-        'rewrite'             => [ 'slug' => 'artigos-cases' ],
-    ] );
 }
 add_action( 'init', 'alianca_register_cpts' );
 
@@ -243,45 +224,6 @@ function alianca_register_acf_fields() {
             ],
         ],
         'location' => [ [ [ 'param' => 'post_type', 'operator' => '==', 'value' => 'servicos' ] ] ],
-    ] );
-
-    // Grupo: Artigos (Cases)
-    acf_add_local_field_group( [
-        'key'      => 'group_estudos_de_caso',
-        'title'    => 'Metricas do Case',
-        'fields'   => [
-            [
-                'key'   => 'field_case_setor',
-                'label' => 'Setor do Cliente (ex: Infraestrutura)',
-                'name'  => 'case_setor',
-                'type'  => 'text',
-            ],
-            [
-                'key'   => 'field_case_conflito',
-                'label' => 'O Conflito',
-                'name'  => 'case_conflito',
-                'type'  => 'textarea',
-            ],
-            [
-                'key'   => 'field_case_metodologia',
-                'label' => 'A Investigacao / Metodologia',
-                'name'  => 'case_metodologia',
-                'type'  => 'textarea',
-            ],
-            [
-                'key'   => 'field_case_resultado',
-                'label' => 'O Desfecho (resultados e metricas)',
-                'name'  => 'case_resultado',
-                'type'  => 'textarea',
-            ],
-            [
-                'key'   => 'field_case_metrica_destaque',
-                'label' => 'Metrica de Destaque (ex: R$ 12M recuperados)',
-                'name'  => 'case_metrica_destaque',
-                'type'  => 'text',
-            ],
-        ],
-        'location' => [ [ [ 'param' => 'post_type', 'operator' => '==', 'value' => 'estudos_de_caso' ] ] ],
     ] );
 
     // Grupo: Depoimentos (para posts e paginas)
