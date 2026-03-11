@@ -1,0 +1,34 @@
+# ============================================================
+# WordPress core — nunca versionar
+# ============================================================
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+license.txt
+readme.html
+
+# wp-content: manter apenas o tema personalizado
+wp-content/index.php
+wp-content/languages/
+wp-content/plugins/
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/themes/twentytwenty*/
+wp-content/themes/index.php
+
+# WordPress config local (gerado pelo Docker)
+wp-config.php
+wp-config-docker.php
+
+# Ambiente local
+.env
+*.log
+docker-compose.override.yml
+
+# OS / IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
