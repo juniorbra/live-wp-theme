@@ -40,7 +40,7 @@ if ( is_post_type_archive() ) {
                 <?php
                 if ( is_post_type_archive( 'noticias' ) )        echo 'Noticias';
                 elseif ( is_post_type_archive( 'servicos' ) )    echo 'Servicos';
-                elseif ( is_post_type_archive( 'estudos_de_caso' ) ) echo 'Estudos de Caso';
+                elseif ( is_post_type_archive( 'estudos_de_caso' ) ) echo 'Artigos';
                 elseif ( is_category() )                          echo 'Categoria';
                 elseif ( is_tag() )                               echo 'Tag';
                 elseif ( is_author() )                            echo 'Autor';

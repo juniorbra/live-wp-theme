@@ -24,7 +24,7 @@ $post_type = get_post_type();
                     <?php if ( $post_type === 'noticias' ) : ?>
                         <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Noticias</a></li>
                     <?php elseif ( $post_type === 'estudos_de_caso' ) : ?>
-                        <li><a href="<?php echo esc_url( home_url( '/estudos-de-caso' ) ); ?>">Estudos de Caso</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/artigos-cases' ) ); ?>">Artigos</a></li>
                     <?php elseif ( $post_type === 'servicos' ) : ?>
                         <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Servicos</a></li>
                     <?php else : ?>
@@ -77,7 +77,7 @@ $post_type = get_post_type();
         <article class="single-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
             <?php
-            // Campos ACF para Estudos de Caso
+            // Campos ACF para Artigos (Cases)
             if ( $post_type === 'estudos_de_caso' && function_exists( 'get_field' ) ) :
                 $conflito     = get_field( 'case_conflito' );
                 $metodologia  = get_field( 'case_metodologia' );

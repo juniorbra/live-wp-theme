@@ -1,6 +1,6 @@
 <?php
 /**
- * Arquivo de listagem do CPT: Estudos de Caso
+ * Arquivo de listagem do CPT: Artigos (Cases)
  */
 get_header();
 ?>
@@ -10,7 +10,7 @@ get_header();
     <div class="page-hero">
         <div class="container">
             <span class="section__eyebrow">Resultados Comprovados</span>
-            <h1 class="page-hero__title">Estudos de Caso</h1>
+            <h1 class="page-hero__title">Artigos</h1>
             <p class="page-hero__subtitle">
                 Cases reais com absoluto sigilo sobre identidades. O que importa sao os metodos e os resultados.
             </p>
@@ -30,7 +30,7 @@ get_header();
         </div>
     </div>
 
-    <section class="section" aria-label="Lista de estudos de caso">
+    <section class="section" aria-label="Lista de artigos">
         <div class="container">
 
             <?php if ( have_posts() ) : ?>
@@ -93,7 +93,7 @@ get_header();
 
             <?php else : ?>
                 <div class="no-results">
-                    <h2>Nenhum estudo de caso publicado ainda.</h2>
+                    <h2>Nenhum artigo publicado ainda.</h2>
                     <p>Entre em contato para conhecer nosso portfolio de resultados de forma confidencial.</p>
                     <a href="<?php echo esc_url( home_url( '/contato' ) ); ?>" class="btn btn--navy">
                         Solicitar Portfolio Confidencial

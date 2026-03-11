@@ -146,14 +146,14 @@ get_header();
     </section>
 
     <!-- ========================================================
-         ESTUDOS DE CASO — metodologia "O Conflito > A Investigacao > O Desfecho"
+         ARTIGOS — metodologia "O Conflito > A Investigacao > O Desfecho"
          ======================================================== -->
     <section class="section" id="cases" aria-labelledby="cases-heading">
         <div class="container">
 
             <header class="section__header">
                 <span class="section__eyebrow">Resultados Comprovados</span>
-                <h2 class="section__title" id="cases-heading">Estudos de Caso</h2>
+                <h2 class="section__title" id="cases-heading">Artigos</h2>
                 <p class="section__subtitle">
                     Cases reais apresentados com absoluto sigilo sobre identidades — o que importa sao os resultados.
                 </p>
@@ -204,7 +204,7 @@ get_header();
             ?>
             <div class="cases-placeholder">
                 <p class="cases-placeholder__text">
-                    Nossos estudos de caso serao publicados em breve. Entre em contato para conhecer nosso historico de resultados.
+                    Nossos artigos serao publicados em breve. Entre em contato para conhecer nosso historico de resultados.
                 </p>
                 <a href="<?php echo esc_url( home_url( '/contato' ) ); ?>" class="btn btn--navy">
                     Solicitar Portfolio Confidencial

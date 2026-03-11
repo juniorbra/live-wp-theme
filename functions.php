@@ -145,16 +145,16 @@ function alianca_register_cpts() {
         'rewrite'             => [ 'slug' => 'noticias' ],
     ] );
 
-    // --- Estudos de Caso ---
+    // --- Artigos (Cases) ---
     register_post_type( 'estudos_de_caso', [
-        'label'               => __( 'Estudos de Caso', 'alianca' ),
+        'label'               => __( 'Artigos', 'alianca' ),
         'labels'              => [
-            'name'               => __( 'Estudos de Caso', 'alianca' ),
-            'singular_name'      => __( 'Estudo de Caso', 'alianca' ),
-            'add_new_item'       => __( 'Adicionar Estudo de Caso', 'alianca' ),
-            'edit_item'          => __( 'Editar Estudo de Caso', 'alianca' ),
-            'all_items'          => __( 'Todos os Estudos de Caso', 'alianca' ),
-            'menu_name'          => __( 'Estudos de Caso', 'alianca' ),
+            'name'               => __( 'Artigos', 'alianca' ),
+            'singular_name'      => __( 'Artigo', 'alianca' ),
+            'add_new_item'       => __( 'Adicionar Artigo', 'alianca' ),
+            'edit_item'          => __( 'Editar Artigo', 'alianca' ),
+            'all_items'          => __( 'Todos os Artigos', 'alianca' ),
+            'menu_name'          => __( 'Artigos', 'alianca' ),
         ],
         'public'              => true,
         'has_archive'         => true,
@@ -162,7 +162,7 @@ function alianca_register_cpts() {
         'menu_icon'           => 'dashicons-portfolio',
         'menu_position'       => 7,
         'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ],
-        'rewrite'             => [ 'slug' => 'estudos-de-caso' ],
+        'rewrite'             => [ 'slug' => 'artigos-cases' ],
     ] );
 }
 add_action( 'init', 'alianca_register_cpts' );
@@ -245,7 +245,7 @@ function alianca_register_acf_fields() {
         'location' => [ [ [ 'param' => 'post_type', 'operator' => '==', 'value' => 'servicos' ] ] ],
     ] );
 
-    // Grupo: Estudos de Caso
+    // Grupo: Artigos (Cases)
     acf_add_local_field_group( [
         'key'      => 'group_estudos_de_caso',
         'title'    => 'Metricas do Case',

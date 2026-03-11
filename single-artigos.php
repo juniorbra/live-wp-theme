@@ -1,6 +1,6 @@
 <?php
 /**
- * Single para o CPT: Estudos de Caso
+ * Single para o CPT: Artigos (Cases)
  * Layout: O Conflito -> A Investigacao/Metodologia -> O Desfecho
  */
 get_header();
@@ -21,7 +21,7 @@ $metrica     = function_exists( 'get_field' ) ? get_field( 'case_metrica_destaqu
             <nav class="breadcrumb" aria-label="Caminho de navegacao">
                 <ol class="breadcrumb__list">
                     <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/estudos-de-caso' ) ); ?>">Estudos de Caso</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/artigos-cases' ) ); ?>">Estudos de Caso</a></li>
                     <li aria-current="page"><?php the_title(); ?></li>
                 </ol>
             </nav>
@@ -126,6 +126,7 @@ $metrica     = function_exists( 'get_field' ) ? get_field( 'case_metrica_destaqu
                     <ul class="case-index">
                         <?php if ( $conflito ) : ?>
                         <li><a href="#o-conflito" class="case-index__link">01 — O Conflito</a></li>
+
                         <?php endif; ?>
                         <?php if ( $metodologia ) : ?>
                         <li><a href="#a-metodologia" class="case-index__link">02 — A Metodologia</a></li>
@@ -139,7 +140,7 @@ $metrica     = function_exists( 'get_field' ) ? get_field( 'case_metrica_destaqu
 
             <!-- Outros cases -->
             <div class="sidebar-widget">
-                <h3 class="sidebar-widget__title">Outros Casos</h3>
+                <h3 class="sidebar-widget__title">Outros Artigos</h3>
                 <?php
                 $outros = new WP_Query( [
                     'post_type'      => 'estudos_de_caso',
@@ -165,8 +166,8 @@ $metrica     = function_exists( 'get_field' ) ? get_field( 'case_metrica_destaqu
                     <?php endwhile; ?>
                 </ul>
                 <?php wp_reset_postdata(); endif; ?>
-                <a href="<?php echo esc_url( home_url( '/estudos-de-caso' ) ); ?>" class="sidebar-links__all">
-                    Ver todos os casos &rarr;
+                <a href="<?php echo esc_url( home_url( '/artigos-cases' ) ); ?>" class="sidebar-links__all">
+                    Ver todos os artigos &rarr;
                 </a>
             </div>
 
