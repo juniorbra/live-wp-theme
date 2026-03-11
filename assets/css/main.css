@@ -17,6 +17,10 @@
     max-width: var(--container-narrow);
 }
 
+.container--wide {
+    max-width: var(--container-wide);
+}
+
 /* ============================================================
    TIPOGRAFIA
    ============================================================ */
@@ -464,8 +468,30 @@ p:last-child { margin-bottom: 0; }
 /* Servicos na front-page: todos na mesma linha */
 @media (min-width: 64rem) {
     .cards-grid--servicos {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
+}
+
+.card--servico {
+    border-top: 3px solid var(--color-accent);
+}
+
+.card__title--servico {
+    font-size: var(--text-base);
+    font-weight: 700;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 4em;
+}
+
+.cards-grid--servicos .card__excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .card {

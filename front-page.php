@@ -65,7 +65,7 @@ get_header();
          NOSSOS SERVICOS — CPT servicos em grid de cards
          ======================================================== -->
     <section class="section section--alt" id="servicos" aria-labelledby="servicos-heading">
-        <div class="container">
+        <div class="container container--wide">
 
             <header class="section__header">
                 <span class="section__eyebrow">Areas de Atuacao</span>
@@ -98,10 +98,10 @@ get_header();
                     </div>
                     <?php endif; ?>
                     <div class="card__body">
-                        <h3 class="card__title" id="servico-<?php the_ID(); ?>">
+                        <h3 class="card__title card__title--servico" id="servico-<?php the_ID(); ?>">
                             <?php the_title(); ?>
                         </h3>
-                        <p class="card__excerpt"><?php the_excerpt(); ?></p>
+                        <p class="card__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 15 ) ); ?></p>
                         <a
                             href="<?php the_permalink(); ?>"
                             class="btn btn--outline btn--sm"
