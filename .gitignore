@@ -1,0 +1,17 @@
+# Ignorar tudo exceto os arquivos do tema na raiz
+wp-content/
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+license.txt
+readme.html
+docker-compose.yml
+docker-compose.override.yml
+wp-config.php
+.env
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
