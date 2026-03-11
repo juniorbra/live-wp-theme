@@ -461,6 +461,13 @@ p:last-child { margin-bottom: 0; }
     .cards-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
+/* Servicos na front-page: todos na mesma linha */
+@media (min-width: 64rem) {
+    .cards-grid--servicos {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
 .card {
     background-color: var(--color-white);
     border: 1px solid var(--color-border);

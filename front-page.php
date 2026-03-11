@@ -86,7 +86,7 @@ get_header();
 
             if ( $servicos_query->have_posts() ) :
             ?>
-            <ul class="cards-grid" role="list">
+            <ul class="cards-grid cards-grid--servicos" role="list">
                 <?php while ( $servicos_query->have_posts() ) : $servicos_query->the_post(); ?>
                 <li class="card card--servico">
                     <?php if ( has_post_thumbnail() ) : ?>
@@ -117,7 +117,7 @@ get_header();
             else :
                 // Fallback estatico enquanto os CPTs nao foram preenchidos
             ?>
-            <ul class="cards-grid" role="list">
+            <ul class="cards-grid cards-grid--servicos" role="list">
                 <?php
                 $servicos_default = [
                     [ 'titulo' => 'Pareceres de Economia e Atuaria',          'desc' => 'Modelagem economica, calculo atuarial e formulas matematicas aplicadas a litigios financeiros complexos.' ],
