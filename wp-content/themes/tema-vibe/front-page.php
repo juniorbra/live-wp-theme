@@ -1,0 +1,370 @@
+<?php
+/**
+ * Template para a pagina inicial (Front Page).
+ * WordPress usa este arquivo automaticamente quando uma pagina estatica
+ * esta definida em Configuracoes > Leitura.
+ */
+
+get_header();
+?>
+
+<main id="main-content" class="site-main" role="main">
+
+    <!-- ========================================================
+         HERO SECTION — above the fold
+         ======================================================== -->
+    <section
+        class="hero"
+        id="hero"
+        aria-labelledby="hero-heading"
+    >
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="container hero__content">
+            <span class="hero__eyebrow">Alianca Consultoria e Engenharia</span>
+            <h1 class="hero__title" id="hero-heading">
+                Excelencia e Precisao em Laudos de Engenharia e Financas para Litigios Complexos
+            </h1>
+            <p class="hero__subtitle">
+                Combinamos rigor cientifico, metodologia academica e profunda experiencia tecnica para defender com solidez os interesses de nossos clientes em disputas judiciais e arbitragens de alta complexidade.
+            </p>
+            <div class="hero__actions">
+                <a
+                    href="https://calendly.com/alianca-consultoria"
+                    class="btn btn--accent btn--lg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Agendar Consulta Tecnica com um especialista da Alianca"
+                >
+                    Agendar Consulta Tecnica
+                </a>
+                <a href="#servicos" class="btn btn--ghost btn--lg">
+                    Conhecer Servicos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         PROVA SOCIAL — faixa de logos de clientes
+         ======================================================== -->
+    <section class="social-proof" aria-label="Setores atendidos">
+        <div class="container">
+            <p class="social-proof__label">Confianca comprovada nos setores de maior complexidade:</p>
+            <ul class="social-proof__logos" role="list">
+                <li class="social-proof__item">Infraestrutura</li>
+                <li class="social-proof__item">Portos e Logistica</li>
+                <li class="social-proof__item">Barragens e Hidrelétricas</li>
+                <li class="social-proof__item">Seguradoras</li>
+                <li class="social-proof__item">Fundos de Pensao</li>
+                <li class="social-proof__item">Concessoes Rodoviarias</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         NOSSOS SERVICOS — CPT servicos em grid de cards
+         ======================================================== -->
+    <section class="section section--alt" id="servicos" aria-labelledby="servicos-heading">
+        <div class="container">
+
+            <header class="section__header">
+                <span class="section__eyebrow">Areas de Atuacao</span>
+                <h2 class="section__title" id="servicos-heading">Nossos Servicos</h2>
+                <p class="section__subtitle">
+                    Expertise multidisciplinar com rigor tecnico-cientifico para os casos mais complexos.
+                </p>
+            </header>
+
+            <?php
+            $servicos_query = new WP_Query( [
+                'post_type'      => 'servicos',
+                'posts_per_page' => 6,
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+                'post_status'    => 'publish',
+            ] );
+
+            if ( $servicos_query->have_posts() ) :
+            ?>
+            <ul class="cards-grid" role="list">
+                <?php while ( $servicos_query->have_posts() ) : $servicos_query->the_post(); ?>
+                <li class="card card--servico">
+                    <?php if ( has_post_thumbnail() ) : ?>
+                    <div class="card__image">
+                        <?php the_post_thumbnail( 'alianca-card', [
+                            'loading' => 'lazy',
+                            'alt'     => get_the_title(),
+                        ] ); ?>
+                    </div>
+                    <?php endif; ?>
+                    <div class="card__body">
+                        <h3 class="card__title" id="servico-<?php the_ID(); ?>">
+                            <?php the_title(); ?>
+                        </h3>
+                        <p class="card__excerpt"><?php the_excerpt(); ?></p>
+                        <a
+                            href="<?php the_permalink(); ?>"
+                            class="btn btn--outline btn--sm"
+                            aria-labelledby="servico-<?php the_ID(); ?>"
+                        >
+                            Saiba Mais
+                        </a>
+                    </div>
+                </li>
+                <?php endwhile; ?>
+            </ul>
+            <?php
+            else :
+                // Fallback estatico enquanto os CPTs nao foram preenchidos
+            ?>
+            <ul class="cards-grid" role="list">
+                <?php
+                $servicos_default = [
+                    [ 'titulo' => 'Pareceres de Economia e Atuaria',          'desc' => 'Modelagem economica, calculo atuarial e formulas matematicas aplicadas a litigios financeiros complexos.' ],
+                    [ 'titulo' => 'Pareceres de Engenharia',                   'desc' => 'Laudos periciais tecnicos com metodologia rigorosa para disputas em obras de infraestrutura.' ],
+                    [ 'titulo' => 'Assistencia Tecnica Judicial',              'desc' => 'Suporte especializado a peritos judiciais e apoio tecnico em todas as fases processuais.' ],
+                    [ 'titulo' => 'Analise de Equilibrio Economico-financeiro','desc' => 'Avaliacao de reequilibrio contratual em concessoes, PPPs e contratos de longo prazo.' ],
+                    [ 'titulo' => 'Gerenciamento de Obras Complexas',          'desc' => 'Gestao tecnica e financeira de empreendimentos de grande porte com foco em prazo e conformidade.' ],
+                ];
+                foreach ( $servicos_default as $s ) :
+                ?>
+                <li class="card card--servico">
+                    <div class="card__body">
+                        <h3 class="card__title"><?php echo esc_html( $s['titulo'] ); ?></h3>
+                        <p class="card__excerpt"><?php echo esc_html( $s['desc'] ); ?></p>
+                        <a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>" class="btn btn--outline btn--sm">Saiba Mais</a>
+                    </div>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php
+            endif;
+            wp_reset_postdata();
+            ?>
+
+        </div>
+    </section>
+
+    <!-- ========================================================
+         ESTUDOS DE CASO — metodologia "O Conflito > A Investigacao > O Desfecho"
+         ======================================================== -->
+    <section class="section" id="cases" aria-labelledby="cases-heading">
+        <div class="container">
+
+            <header class="section__header">
+                <span class="section__eyebrow">Resultados Comprovados</span>
+                <h2 class="section__title" id="cases-heading">Estudos de Caso</h2>
+                <p class="section__subtitle">
+                    Cases reais apresentados com absoluto sigilo sobre identidades — o que importa sao os resultados.
+                </p>
+            </header>
+
+            <?php
+            $cases_query = new WP_Query( [
+                'post_type'      => 'estudos_de_caso',
+                'posts_per_page' => 3,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+                'post_status'    => 'publish',
+            ] );
+
+            if ( $cases_query->have_posts() ) :
+            ?>
+            <ul class="cases-grid" role="list">
+                <?php while ( $cases_query->have_posts() ) : $cases_query->the_post(); ?>
+                <?php
+                    $setor    = get_post_meta( get_the_ID(), 'case_setor', true );
+                    $conflito = get_post_meta( get_the_ID(), 'case_conflito', true );
+                    $metrica  = get_post_meta( get_the_ID(), 'case_metrica_destaque', true );
+                ?>
+                <li class="case-card">
+                    <?php if ( $setor ) : ?>
+                    <span class="case-card__tag"><?php echo esc_html( $setor ); ?></span>
+                    <?php endif; ?>
+                    <h3 class="case-card__title"><?php the_title(); ?></h3>
+                    <?php if ( $conflito ) : ?>
+                    <div class="case-card__step">
+                        <span class="case-card__step-label">O Conflito</span>
+                        <p><?php echo esc_html( wp_trim_words( $conflito, 30 ) ); ?></p>
+                    </div>
+                    <?php endif; ?>
+                    <?php if ( $metrica ) : ?>
+                    <div class="case-card__metric">
+                        <?php echo esc_html( $metrica ); ?>
+                    </div>
+                    <?php endif; ?>
+                    <a href="<?php the_permalink(); ?>" class="case-card__link" aria-label="Ver detalhes do case: <?php the_title_attribute(); ?>">
+                        Ver o Caso Completo &rarr;
+                    </a>
+                </li>
+                <?php endwhile; ?>
+            </ul>
+            <?php
+            else :
+            ?>
+            <div class="cases-placeholder">
+                <p class="cases-placeholder__text">
+                    Nossos estudos de caso serao publicados em breve. Entre em contato para conhecer nosso historico de resultados.
+                </p>
+                <a href="<?php echo esc_url( home_url( '/contato' ) ); ?>" class="btn btn--navy">
+                    Solicitar Portfolio Confidencial
+                </a>
+            </div>
+            <?php
+            endif;
+            wp_reset_postdata();
+            ?>
+
+        </div>
+    </section>
+
+    <!-- ========================================================
+         QUEM SOMOS — Missao, Visao e Valores
+         ======================================================== -->
+    <section class="section section--alt" id="sobre" aria-labelledby="sobre-heading">
+        <div class="container">
+
+            <header class="section__header">
+                <span class="section__eyebrow">Nossa Identidade</span>
+                <h2 class="section__title" id="sobre-heading">Quem Somos</h2>
+            </header>
+
+            <div class="pillars-grid">
+                <div class="pillar">
+                    <div class="pillar__icon" aria-hidden="true">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4L36 14V26L20 36L4 26V14L20 4Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M20 12L28 17V23L20 28L12 23V17L20 12Z" fill="currentColor" opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <h3 class="pillar__title">Missao</h3>
+                    <p class="pillar__text">
+                        Prover solucoes tecnicas de excelencia em engenharia e financas, contribuindo para a resolucao justa de litigios complexos com integridade, precisao e responsabilidade etica.
+                    </p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar__icon" aria-hidden="true">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="20" cy="20" r="6" fill="currentColor" opacity="0.2"/>
+                            <line x1="20" y1="5" x2="20" y2="11" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="pillar__title">Visao</h3>
+                    <p class="pillar__text">
+                        Ser reconhecida como a consultoria de referencia nacional em pericias complexas de engenharia e financas, consolidando nossa reputacao de solidez tecnica e credibilidade irrefutavel.
+                    </p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar__icon" aria-hidden="true">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 6L24 14H32L26 20L28 30L20 25L12 30L14 20L8 14H16L20 6Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="pillar__title">Valores</h3>
+                    <ul class="pillar__values">
+                        <li>Competencia Tecnica</li>
+                        <li>Honestidade e Etica</li>
+                        <li>Agilidade e Comprometimento</li>
+                        <li>Qualidade sem Concessoes</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================================
+         LIDERANCA DE PENSAMENTO — Artigos e Noticias recentes
+         ======================================================== -->
+    <section class="section" id="insights" aria-labelledby="insights-heading">
+        <div class="container">
+
+            <header class="section__header">
+                <span class="section__eyebrow">Conhecimento em Acao</span>
+                <h2 class="section__title" id="insights-heading">Insights e Publicacoes</h2>
+                <p class="section__subtitle">
+                    Producao tecnica e reflexoes dos nossos especialistas sobre temas relevantes do setor.
+                </p>
+            </header>
+
+            <?php
+            // Puxar posts recentes de 'post' (artigos) e 'noticias' mesclados
+            $insights_query = new WP_Query( [
+                'post_type'      => [ 'post', 'noticias' ],
+                'posts_per_page' => 3,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+                'post_status'    => 'publish',
+            ] );
+
+            if ( $insights_query->have_posts() ) :
+            ?>
+            <ul class="insights-grid" role="list">
+                <?php while ( $insights_query->have_posts() ) : $insights_query->the_post(); ?>
+                <li class="insight-card">
+                    <?php if ( has_post_thumbnail() ) : ?>
+                    <div class="insight-card__image">
+                        <?php the_post_thumbnail( 'alianca-card', [ 'loading' => 'lazy', 'alt' => get_the_title() ] ); ?>
+                    </div>
+                    <?php endif; ?>
+                    <div class="insight-card__body">
+                        <span class="insight-card__type">
+                            <?php echo get_post_type() === 'noticias' ? 'Noticia' : 'Artigo'; ?>
+                        </span>
+                        <time class="insight-card__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+                            <?php echo esc_html( get_the_date( 'd/m/Y' ) ); ?>
+                        </time>
+                        <h3 class="insight-card__title">
+                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        </h3>
+                        <p class="insight-card__excerpt"><?php the_excerpt(); ?></p>
+                    </div>
+                </li>
+                <?php endwhile; ?>
+            </ul>
+            <div class="section__footer">
+                <a href="<?php echo esc_url( home_url( '/artigos' ) ); ?>" class="btn btn--outline">
+                    Ver Todas as Publicacoes
+                </a>
+            </div>
+            <?php
+            endif;
+            wp_reset_postdata();
+            ?>
+
+        </div>
+    </section>
+
+    <!-- ========================================================
+         CTA FINAL — Agendar consulta
+         ======================================================== -->
+    <section class="cta-band" aria-labelledby="cta-heading">
+        <div class="container cta-band__inner">
+            <div class="cta-band__text">
+                <h2 class="cta-band__title" id="cta-heading">
+                    Precisa de um especialista para o seu caso?
+                </h2>
+                <p class="cta-band__subtitle">
+                    Fale com nossa equipe e descubra como podemos construir uma argumentacao tecnica solida para o seu litigio.
+                </p>
+            </div>
+            <div class="cta-band__actions">
+                <a
+                    href="https://calendly.com/alianca-consultoria"
+                    class="btn btn--accent btn--lg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Agendar Consulta Tecnica
+                </a>
+                <a href="mailto:contato@aliancaconsultoria.com.br" class="btn btn--ghost btn--lg">
+                    Enviar E-mail
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<?php get_footer(); ?>
