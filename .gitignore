@@ -1,14 +1,8 @@
-# Ignorar todos os arquivos e pastas na raiz
-/*
-
-# Exceto o próprio arquivo .gitignore
-!.gitignore
-
-# Permitir a estrutura de pastas até chegar no tema
-!/wp-content/
-/wp-content/*
-!/wp-content/themes/
-/wp-content/themes/*
-
-# Permitir APENAS a pasta do seu tema
-!/wp-content/themes/tema-vibe/
+docker-compose.yml
+docker-compose.override.yml
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+wp-config.php
