@@ -1,17 +1,14 @@
-# Ignorar tudo exceto os arquivos do tema na raiz
-wp-content/
-wp-admin/
-wp-includes/
-wp-*.php
-xmlrpc.php
-license.txt
-readme.html
-docker-compose.yml
-docker-compose.override.yml
-wp-config.php
-.env
-*.log
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+# Ignorar todos os arquivos e pastas na raiz
+/*
+
+# Exceto o próprio arquivo .gitignore
+!.gitignore
+
+# Permitir a estrutura de pastas até chegar no tema
+!/wp-content/
+/wp-content/*
+!/wp-content/themes/
+/wp-content/themes/*
+
+# Permitir APENAS a pasta do seu tema
+!/wp-content/themes/tema-vibe/
