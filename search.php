@@ -19,7 +19,7 @@ $found_posts  = $GLOBALS['wp_query']->found_posts;
                 <?php if ( $search_query ) : ?>
                     Resultados para: <em>"<?php echo esc_html( $search_query ); ?>"</em>
                 <?php else : ?>
-                    O que voce procura?
+                    O que você procura?
                 <?php endif; ?>
             </h1>
             <?php if ( $search_query ) : ?>
@@ -55,9 +55,9 @@ $found_posts  = $GLOBALS['wp_query']->found_posts;
                         <?php
                         $type_labels = [
                             'post'     => 'Artigo',
-                            'page'     => 'Pagina',
-                            'noticias' => 'Noticia',
-                            'servicos' => 'Servico',
+                            'page'     => 'Página',
+                            'noticias' => 'Notícia',
+                            'servicos' => 'Serviço',
                         ];
                         $pt = get_post_type();
                         echo esc_html( $type_labels[ $pt ] ?? ucfirst( $pt ) );
@@ -84,13 +84,13 @@ $found_posts  = $GLOBALS['wp_query']->found_posts;
             </ul>
 
             <!-- Paginacao -->
-            <nav class="archive-pagination" aria-label="<?php esc_attr_e( 'Navegacao de resultados', 'alianca' ); ?>">
+            <nav class="archive-pagination" aria-label="<?php esc_attr_e( 'Navegação de resultados', 'alianca' ); ?>">
                 <?php
                 the_posts_pagination( [
                     'mid_size'           => 2,
                     'prev_text'          => '&larr; Anterior',
-                    'next_text'          => 'Proximo &rarr;',
-                    'screen_reader_text' => __( 'Navegar entre paginas de resultados', 'alianca' ),
+                    'next_text'          => 'Próximo &rarr;',
+                    'screen_reader_text' => __( 'Navegar entre páginas de resultados', 'alianca' ),
                 ] );
                 ?>
             </nav>
@@ -99,14 +99,14 @@ $found_posts  = $GLOBALS['wp_query']->found_posts;
 
             <div class="no-results">
                 <h2>Nenhum resultado para "<?php echo esc_html( $search_query ); ?>"</h2>
-                <p>Verifique a ortografia ou tente termos mais gerais. Voce tambem pode explorar nossas areas de atuacao:</p>
+                <p>Verifique a ortografia ou tente termos mais gerais. Você também pode explorar nossas áreas de atuação:</p>
                 <ul class="no-results__suggestions">
-                    <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Servicos</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Noticias</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Serviços</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Notícias</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/artigos' ) ); ?>">Artigos</a></li>
                 </ul>
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn--navy">
-                    Voltar ao Inicio
+                    Voltar ao Início
                 </a>
             </div>
 

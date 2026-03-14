@@ -53,8 +53,8 @@ if ( function_exists('get_field') ) {
         <div class="container">
             <p class="section__eyebrow">
                 <?php
-                if ( is_post_type_archive( 'noticias' ) )        echo 'Noticias';
-                elseif ( is_post_type_archive( 'servicos' ) )    echo 'Servicos';
+                if ( is_post_type_archive( 'noticias' ) )        echo 'Notícias';
+                elseif ( is_post_type_archive( 'servicos' ) )    echo 'Serviços';
                 elseif ( is_post_type_archive( 'clientes' ) )    echo 'Clientes';
                 elseif ( is_post_type_archive( 'estudos_de_caso' ) ) echo 'Artigos';
                 elseif ( is_category() )                          echo 'Categoria';
@@ -138,13 +138,13 @@ if ( function_exists('get_field') ) {
             </ul>
 
             <!-- Paginacao -->
-            <nav class="archive-pagination" aria-label="<?php esc_attr_e( 'Navegacao de paginas', 'alianca' ); ?>">
+            <nav class="archive-pagination" aria-label="<?php esc_attr_e( 'Navegação de páginas', 'alianca' ); ?>">
                 <?php
                 the_posts_pagination( [
                     'mid_size'           => 2,
                     'prev_text'          => '&larr; Anterior',
-                    'next_text'          => 'Proximo &rarr;',
-                    'screen_reader_text' => __( 'Navegar entre paginas', 'alianca' ),
+                    'next_text'          => 'Próximo &rarr;',
+                    'screen_reader_text' => __( 'Navegar entre páginas', 'alianca' ),
                 ] );
                 ?>
             </nav>
@@ -153,9 +153,9 @@ if ( function_exists('get_field') ) {
 
             <div class="no-results">
                 <h2><?php esc_html_e( 'Nenhum resultado encontrado.', 'alianca' ); ?></h2>
-                <p><?php esc_html_e( 'Nao encontramos publicacoes neste arquivo. Tente navegar pelo menu ou use a busca.', 'alianca' ); ?></p>
+                <p><?php esc_html_e( 'Não encontramos publicações neste arquivo. Tente navegar pelo menu ou use a busca.', 'alianca' ); ?></p>
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn--navy">
-                    Voltar ao Inicio
+                    Voltar ao Início
                 </a>
             </div>
 

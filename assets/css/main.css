@@ -595,7 +595,22 @@ p:last-child {
 .hero__actions {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--space-4);
+}
+
+.hero__linkedin {
+    position: absolute;
+    bottom: var(--space-8);
+    right: var(--space-10);
+    display: inline-flex;
+    align-items: center;
+}
+
+.hero__linkedin-img {
+    height: 44px;
+    width: auto;
+    display: block;
 }
 
 /* ============================================================
@@ -1084,7 +1099,8 @@ p:last-child {
 
 @media (min-width: 64rem) {
     .footer-grid {
-        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: var(--space-8);
     }
 }
 

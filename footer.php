@@ -5,28 +5,20 @@
 
             <!-- Coluna 1: Marca e descricao -->
             <div class="footer-brand">
-                <?php if ( has_custom_logo() ) : ?>
-                    <?php the_custom_logo(); ?>
-                <?php else : ?>
-                    <p class="footer-site-name"><?php bloginfo( 'name' ); ?></p>
-                <?php endif; ?>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo-link">
+                    <img
+                        src="<?php echo esc_url( home_url( '/wp-content/uploads/2025/02/logo170-1.png' ) ); ?>"
+                        alt="<?php bloginfo( 'name' ); ?>"
+                        class="footer-logo"
+                        loading="lazy"
+                    >
+                </a>
                 <p class="footer-tagline"><?php bloginfo( 'description' ); ?></p>
                 <p class="footer-legal-text">
-                    Empresa registrada no CREA/ABNT. Atuacao em todo o territorio nacional.
+                    Empresa registrada no CREA/ABNT. Atuação em todo o território nacional.
                 </p>
             </div>
 
-            <!-- Coluna 2: Servicos (links rapidos) -->
-            <div class="footer-col">
-                <h3 class="footer-col__title">Servicos</h3>
-                <ul class="footer-links">
-                    <li><a href="<?php echo esc_url( home_url( '/servicos/pareceres-economia-atuaria' ) ); ?>">Pareceres de Economia e Atuaria</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/servicos/pareceres-engenharia' ) ); ?>">Pareceres de Engenharia</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/servicos/assistencia-tecnica-judicial' ) ); ?>">Assistencia Tecnica Judicial</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/servicos/equilibrio-economico-financeiro' ) ); ?>">Analise de Equilibrio Economico-financeiro</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/servicos/gerenciamento-de-obras' ) ); ?>">Gerenciamento de Obras</a></li>
-                </ul>
-            </div>
 
             <!-- Coluna 3: Institucional -->
             <div class="footer-col">
@@ -40,7 +32,7 @@
                         echo '<ul class="footer-links">
                             <li><a href="' . esc_url( home_url( '/quem-somos' ) ) . '">Quem Somos</a></li>
                             <li><a href="' . esc_url( home_url( '/clientes' ) ) . '">Clientes</a></li>
-                            <li><a href="' . esc_url( home_url( '/noticias' ) ) . '">Noticias</a></li>
+                            <li><a href="' . esc_url( home_url( '/noticias' ) ) . '">Notícias</a></li>
                             <li><a href="' . esc_url( home_url( '/artigos' ) ) . '">Artigos</a></li>
                         </ul>';
                     },
@@ -48,39 +40,24 @@
                 ?>
             </div>
 
-            <!-- Coluna 4: Contato -->
+            <!-- Coluna 4: São Paulo -->
             <div class="footer-col footer-contact">
-                <h3 class="footer-col__title">Contato</h3>
+                <h3 class="footer-col__title">São Paulo</h3>
                 <address class="footer-address">
-                    <p>
-                        <span class="screen-reader-text">Endereco: </span>
-                        <?php echo get_field('contato_endereco_1', 'page_on_front') ?: 'Av. Faria Lima, 3729 — Itaim Bibi<br>Sao Paulo — SP<br>CEP 04538-905'; ?>
-                    </p>
-                    <p>
-                        <?php if($tel = get_field('contato_telefone_1', 'page_on_front')): ?>
-                            <a href="tel:<?php echo preg_replace('/\D/', '', $tel); ?>" aria-label="Ligue para Alianca Consultoria">
-                                <?php echo esc_html($tel); ?>
-                            </a>
-                        <?php else: ?>
-                            <a href="tel:+551134436221" aria-label="Ligue para Alianca Consultoria">
-                                +55 (11) 3443-6221
-                            </a>
-                        <?php endif; ?>
-                    </p>
-                    <p>
-                        <a href="mailto:<?php echo get_field('contato_email', 'page_on_front') ?: 'comercial@aliancaengenharia.com.br'; ?>" aria-label="Envie um e-mail">
-                            <?php echo get_field('contato_email', 'page_on_front') ?: 'comercial@aliancaengenharia.com.br'; ?>
-                        </a>
-                    </p>
+                    <p>Av. Brg. Faria Lima, 3729, 5º andar<br>Itaim Bibi — São Paulo — SP<br>CEP 04538-905</p>
+                    <p><a href="tel:+551134436221">+55 (11) 3443-6221</a></p>
+                    <p><a href="mailto:comercial@aliancaengenharia.com.br">comercial@aliancaengenharia.com.br</a></p>
                 </address>
-                <a
-                    href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>"
-                    class="btn btn--outline footer-cta-btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <?php esc_html_e( 'Agendar Consulta', 'alianca' ); ?>
-                </a>
+            </div>
+
+            <!-- Coluna 5: Rio de Janeiro -->
+            <div class="footer-col footer-contact">
+                <h3 class="footer-col__title">Rio de Janeiro</h3>
+                <address class="footer-address">
+                    <p>Rua da Assembléia, 58, 6º andar<br>Centro — Rio de Janeiro — RJ<br>CEP 20011-000</p>
+                    <p><a href="tel:+552125447444">+55 (21) 2544-7444</a></p>
+                    <p><a href="mailto:comercial@aliancaengenharia.com.br">comercial@aliancaengenharia.com.br</a></p>
+                </address>
             </div>
 
         </div><!-- .footer-grid -->

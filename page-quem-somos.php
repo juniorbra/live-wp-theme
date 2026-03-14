@@ -35,9 +35,9 @@ get_header();
                             <path d="M20 12L28 17V23L20 28L12 23V17L20 12Z" fill="currentColor" opacity="0.2"/>
                         </svg>
                     </div>
-                    <h3 class="pillar__title">Missao</h3>
+                    <h3 class="pillar__title">Missão</h3>
                     <p class="pillar__text">
-                        Prover solucoes tecnicas de excelencia em engenharia e financas, contribuindo para a resolucao justa de litigios complexos com integridade, precisao e responsabilidade etica.
+                        Prover soluções técnicas de excelência em engenharia e finanças, contribuindo para a resolução justa de litígios complexos com integridade, precisão e responsabilidade ética.
                     </p>
                 </div>
 
@@ -49,9 +49,9 @@ get_header();
                             <line x1="20" y1="5" x2="20" y2="11" stroke="currentColor" stroke-width="2"/>
                         </svg>
                     </div>
-                    <h3 class="pillar__title">Visao</h3>
+                    <h3 class="pillar__title">Visão</h3>
                     <p class="pillar__text">
-                        Ser reconhecida como a consultoria de referencia nacional em pericias complexas de engenharia e financas, consolidando nossa reputacao de solidez tecnica e credibilidade irrefutavel.
+                        Ser reconhecida como a consultoria de referência nacional em perícias complexas de engenharia e finanças, consolidando nossa reputação de solidez técnica e credibilidade irrefutável.
                     </p>
                 </div>
 
@@ -63,10 +63,10 @@ get_header();
                     </div>
                     <h3 class="pillar__title">Valores</h3>
                     <ul class="pillar__values">
-                        <li>Competencia Tecnica</li>
-                        <li>Honestidade e Etica</li>
+                        <li>Competência Técnica</li>
+                        <li>Honestidade e Ética</li>
                         <li>Agilidade e Comprometimento</li>
-                        <li>Qualidade sem Concessoes</li>
+                        <li>Qualidade sem Concessões</li>
                     </ul>
                 </div>
 
@@ -106,29 +106,29 @@ get_header();
                 <li class="diferencial">
                     <span class="diferencial__num" aria-hidden="true">01</span>
                     <div>
-                        <h3 class="diferencial__title">Metodologia Academica</h3>
-                        <p class="diferencial__text">Laudos fundamentados em literatura cientifica e normas tecnicas internacionais, com rigor metodologico exigido nos tribunais arbitrais de maior complexidade.</p>
+                        <h3 class="diferencial__title">Metodologia Acadêmica</h3>
+                        <p class="diferencial__text">Laudos fundamentados em literatura científica e normas técnicas internacionais, com rigor metodológico exigido nos tribunais arbitrais de maior complexidade.</p>
                     </div>
                 </li>
                 <li class="diferencial">
                     <span class="diferencial__num" aria-hidden="true">02</span>
                     <div>
                         <h3 class="diferencial__title">Equipe Multidisciplinar</h3>
-                        <p class="diferencial__text">Engenheiros, economistas, atuarios e advogados trabalhando de forma integrada para cobrir todas as dimensoes tecnicas e juridicas de cada caso.</p>
+                        <p class="diferencial__text">Engenheiros, economistas, atuários e advogados trabalhando de forma integrada para cobrir todas as dimensões técnicas e jurídicas de cada caso.</p>
                     </div>
                 </li>
                 <li class="diferencial">
                     <span class="diferencial__num" aria-hidden="true">03</span>
                     <div>
-                        <h3 class="diferencial__title">Experiencia em Litigios Complexos</h3>
-                        <p class="diferencial__text">Atuamos em disputas de alta complexidade envolvendo infraestrutura, concessoes, PPPs, barragens, seguros e contratos de longo prazo.</p>
+                        <h3 class="diferencial__title">Experiência em Litígios Complexos</h3>
+                        <p class="diferencial__text">Atuamos em disputas de alta complexidade envolvendo infraestrutura, concessões, PPPs, barragens, seguros e contratos de longo prazo.</p>
                     </div>
                 </li>
                 <li class="diferencial">
                     <span class="diferencial__num" aria-hidden="true">04</span>
                     <div>
                         <h3 class="diferencial__title">Sigilo e Confiabilidade</h3>
-                        <p class="diferencial__text">Compromisso absoluto com a confidencialidade das informacoes dos clientes, respeitando os mais altos padroes de etica profissional e conformidade com a LGPD.</p>
+                        <p class="diferencial__text">Compromisso absoluto com a confidencialidade das informações dos clientes, respeitando os mais altos padrões de ética profissional e conformidade com a LGPD.</p>
                     </div>
                 </li>
             </ul>
@@ -163,14 +163,14 @@ get_header();
         <div class="container cta-band__inner">
             <div class="cta-band__text">
                 <h2 class="cta-band__title" id="qs-cta-heading">Vamos trabalhar juntos?</h2>
-                <p class="cta-band__subtitle">Fale com nossa equipe e descubra como podemos construir uma argumentacao tecnica solida para o seu litigio.</p>
+                <p class="cta-band__subtitle">Fale com nossa equipe e descubra como podemos construir uma argumentação técnica sólida para o seu litígio.</p>
             </div>
             <div class="cta-band__actions">
                 <a href="<?php echo esc_url( home_url( '/contato' ) ); ?>" class="btn btn--accent btn--lg">
                     Entrar em Contato
                 </a>
                 <a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>" class="btn btn--ghost btn--lg">
-                    Ver Servicos
+                    Ver Serviços
                 </a>
             </div>
         </div>

@@ -11,10 +11,10 @@ the_post();
     <!-- Hero -->
     <div class="single-hero">
         <div class="container">
-            <nav class="breadcrumb" aria-label="Caminho de navegacao">
+            <nav class="breadcrumb" aria-label="Caminho de navegação">
                 <ol class="breadcrumb__list">
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Noticias</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Notícias</a></li>
                     <li aria-current="page"><?php the_title(); ?></li>
                 </ol>
             </nav>
@@ -47,9 +47,9 @@ the_post();
         </article>
 
         <!-- Sidebar: noticias recentes -->
-        <aside class="single-sidebar" aria-label="Outras noticias">
+        <aside class="single-sidebar" aria-label="Outras notícias">
             <div class="sidebar-widget">
-                <h3 class="sidebar-widget__title">Noticias Recentes</h3>
+                <h3 class="sidebar-widget__title">Notícias Recentes</h3>
                 <?php
                 $recentes = new WP_Query( [
                     'post_type'      => 'noticias',
@@ -74,7 +74,7 @@ the_post();
                 </ul>
                 <?php wp_reset_postdata(); endif; ?>
                 <a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>" class="sidebar-links__all">
-                    Ver todas as noticias &rarr;
+                    Ver todas as notícias &rarr;
                 </a>
             </div>
         </aside>
@@ -83,7 +83,7 @@ the_post();
 
     <!-- Navegacao anterior/proximo -->
     <div class="container">
-        <nav class="single-post-nav" aria-label="Navegacao entre noticias">
+        <nav class="single-post-nav" aria-label="Navegação entre notícias">
             <?php
             $prev = get_previous_post( false, '', '' );
             $next = get_next_post( false, '', '' );
@@ -99,7 +99,7 @@ the_post();
             <?php endif; ?>
             <?php if ( $next ) : ?>
             <a href="<?php echo esc_url( get_permalink( $next ) ); ?>" class="post-nav-link post-nav-link--next" rel="next">
-                <span class="post-nav-link__label">Proximo &rarr;</span>
+                <span class="post-nav-link__label">Próximo &rarr;</span>
                 <span class="post-nav-link__title"><?php echo esc_html( get_the_title( $next ) ); ?></span>
             </a>
             <?php endif; ?>

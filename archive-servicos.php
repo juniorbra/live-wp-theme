@@ -9,8 +9,8 @@ get_header();
 
     <div class="page-hero">
         <div class="container">
-            <span class="section__eyebrow">Areas de Atuacao</span>
-            <h1 class="page-hero__title">Nossos Servicos</h1>
+            <span class="section__eyebrow">Áreas de Atuação</span>
+            <h1 class="page-hero__title">Nossos Serviços</h1>
             <?php
             $hero_subtitle = '';
             if ( function_exists('get_field') ) {
@@ -18,7 +18,7 @@ get_header();
                 $hero_subtitle = get_field('hero_subtitle_servicos', $front_id);
             }
             if ( ! $hero_subtitle ) {
-                $hero_subtitle = 'Expertise multidisciplinar com rigor tecnico-cientifico para os casos de maior complexidade no Brasil.';
+                $hero_subtitle = 'Expertise multidisciplinar com rigor técnico-cientifico para os casos de maior complexidade no Brasil.';
             }
             ?>
             <p class="page-hero__subtitle"><?php echo wp_kses_post( $hero_subtitle ); ?></p>
@@ -112,8 +112,8 @@ get_header();
 
             <?php else : ?>
                 <div class="no-results">
-                    <h2>Nenhum servico publicado ainda.</h2>
-                    <p>Em breve nossos servicos estarao disponiveis aqui.</p>
+                    <h2>Nenhum serviço publicado ainda.</h2>
+                    <p>Em breve nossos serviços estarao disponiveis aqui.</p>
                     <a href="<?php echo esc_url( home_url( '/contato' ) ); ?>" class="btn btn--navy">Fale Conosco</a>
                 </div>
             <?php endif; ?>
@@ -125,12 +125,12 @@ get_header();
     <section class="cta-band" aria-labelledby="cta-servicos-heading">
         <div class="container cta-band__inner">
             <div class="cta-band__text">
-                <h2 class="cta-band__title" id="cta-servicos-heading">Precisa de um parecer tecnico?</h2>
+                <h2 class="cta-band__title" id="cta-servicos-heading">Precisa de um parecer técnico?</h2>
                 <p class="cta-band__subtitle">Agende uma consulta inicial sem compromisso com nossos especialistas.</p>
             </div>
             <div class="cta-band__actions">
                 <a href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>" class="btn btn--accent btn--lg" target="_blank" rel="noopener noreferrer">
-                    Agendar Consulta Tecnica
+                    Agendar Consulta Técnica
                 </a>
             </div>
         </div>

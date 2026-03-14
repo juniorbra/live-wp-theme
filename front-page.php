@@ -33,7 +33,7 @@ get_header();
                     class="btn btn--accent btn--lg"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Agendar Consulta Tecnica com um especialista da Alianca"
+                    aria-label="Agendar Consulta Técnica com um especialista da Alianca"
                 >
                     Agendar Consulta Técnica
                 </a>
@@ -41,7 +41,21 @@ get_header();
                     Conhecer Serviços
                 </a>
             </div>
-        </div>
+        </div><!-- fecha hero__content -->
+
+        <a
+            href="https://www.linkedin.com/company/alianca-consultoria-e-engenharia/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Siga a Aliança no LinkedIn"
+            class="hero__linkedin"
+        >
+            <img
+                src="<?php echo esc_url( home_url( '/wp-content/uploads/2025/03/botao-linkedin.png' ) ); ?>"
+                alt="Siga-nos no LinkedIn"
+                class="hero__linkedin-img"
+            >
+        </a>
     </section>
 
     <!-- ========================================================
@@ -82,10 +96,10 @@ get_header();
         <div class="container container--wide">
 
             <header class="section__header">
-                <span class="section__eyebrow">Areas de Atuacao</span>
-                <h2 class="section__title" id="servicos-heading">Nossos Servicos</h2>
+                <span class="section__eyebrow">Áreas de Atuação</span>
+                <h2 class="section__title" id="servicos-heading">Nossos Serviços</h2>
                 <p class="section__subtitle">
-                    Expertise multidisciplinar com rigor tecnico-cientifico para os casos mais complexos.
+                    Expertise multidisciplinar com rigor técnico-científico para os casos mais complexos.
                 </p>
             </header>
 
@@ -134,11 +148,11 @@ get_header();
             <ul class="cards-grid cards-grid--servicos" role="list">
                 <?php
                 $servicos_default = [
-                    [ 'titulo' => 'Pareceres de Economia e Atuaria',          'desc' => 'Modelagem economica, calculo atuarial e formulas matematicas aplicadas a litigios financeiros complexos.' ],
-                    [ 'titulo' => 'Pareceres de Engenharia',                   'desc' => 'Laudos periciais tecnicos com metodologia rigorosa para disputas em obras de infraestrutura.' ],
-                    [ 'titulo' => 'Assistencia Tecnica Judicial',              'desc' => 'Suporte especializado a peritos judiciais e apoio tecnico em todas as fases processuais.' ],
-                    [ 'titulo' => 'Analise de Equilibrio Economico-financeiro','desc' => 'Avaliacao de reequilibrio contratual em concessoes, PPPs e contratos de longo prazo.' ],
-                    [ 'titulo' => 'Gerenciamento de Obras Complexas',          'desc' => 'Gestao tecnica e financeira de empreendimentos de grande porte com foco em prazo e conformidade.' ],
+                    [ 'titulo' => 'Pareceres de Economia e Atuária',           'desc' => 'Modelagem econômica, cálculo atuarial e fórmulas matemáticas aplicadas a litígios financeiros complexos.' ],
+                    [ 'titulo' => 'Pareceres de Engenharia',                   'desc' => 'Laudos periciais técnicos com metodologia rigorosa para disputas em obras de infraestrutura.' ],
+                    [ 'titulo' => 'Assistência Técnica Judicial',              'desc' => 'Suporte especializado a peritos judiciais e apoio técnico em todas as fases processuais.' ],
+                    [ 'titulo' => 'Análise de Equilíbrio Econômico-financeiro','desc' => 'Avaliação de reequilíbrio contratual em concessões, PPPs e contratos de longo prazo.' ],
+                    [ 'titulo' => 'Gerenciamento de Obras Complexas',          'desc' => 'Gestão técnica e financeira de empreendimentos de grande porte com foco em prazo e conformidade.' ],
                 ];
                 foreach ( $servicos_default as $s ) :
                 ?>
@@ -196,7 +210,7 @@ get_header();
                     </div>
                     <h3 class="pillar__title">Missao</h3>
                     <p class="pillar__text">
-                        Prover solucoes tecnicas de excelencia em engenharia e financas, contribuindo para a resolucao justa de litigios complexos com integridade, precisao e responsabilidade etica.
+                        Prover solucoes técnicas de excelencia em engenharia e financas, contribuindo para a resolucao justa de litigios complexos com integridade, precisao e responsabilidade etica.
                     </p>
                 </div>
                 <div class="pillar">
@@ -209,7 +223,7 @@ get_header();
                     </div>
                     <h3 class="pillar__title">Visao</h3>
                     <p class="pillar__text">
-                        Ser reconhecida como a consultoria de referencia nacional em pericias complexas de engenharia e financas, consolidando nossa reputacao de solidez tecnica e credibilidade irrefutavel.
+                        Ser reconhecida como a consultoria de referencia nacional em pericias complexas de engenharia e financas, consolidando nossa reputacao de solidez técnica e credibilidade irrefutavel.
                     </p>
                 </div>
                 <div class="pillar">
@@ -220,7 +234,7 @@ get_header();
                     </div>
                     <h3 class="pillar__title">Valores</h3>
                     <ul class="pillar__values">
-                        <li>Competencia Tecnica</li>
+                        <li>Competencia Técnica</li>
                         <li>Honestidade e Etica</li>
                         <li>Agilidade e Comprometimento</li>
                         <li>Qualidade sem Concessoes</li>
@@ -303,7 +317,7 @@ get_header();
                     Precisa de um especialista para o seu caso?
                 </h2>
                 <p class="cta-band__subtitle">
-                    Fale com nossa equipe e descubra como podemos construir uma argumentacao tecnica solida para o seu litigio.
+                    Fale com nossa equipe e descubra como podemos construir uma argumentação técnica sólida para o seu litígio.
                 </p>
             </div>
             <div class="cta-band__actions">
@@ -313,7 +327,7 @@ get_header();
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Agendar Consulta Tecnica
+                    Agendar Consulta Técnica
                 </a>
                 <a href="mailto:comercial@aliancaconsultoria.com.br" class="btn btn--ghost btn--lg">
                     Enviar E-mail

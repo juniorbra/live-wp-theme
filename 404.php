@@ -14,10 +14,10 @@ get_header();
             <div class="error-404__code" aria-hidden="true">404</div>
 
             <h1 class="error-404__title" id="error-heading">
-                Pagina nao encontrada
+                Página não encontrada
             </h1>
             <p class="error-404__text">
-                O endereco que voce tentou acessar nao existe ou foi movido. Utilize a busca abaixo ou navegue pelos nossos servicos.
+                O endereço que você tentou acessar não existe ou foi movido. Utilize a busca abaixo ou navegue pelos nossos serviços.
             </p>
 
             <div class="error-404__search">
@@ -26,10 +26,10 @@ get_header();
 
             <div class="error-404__links">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn--navy">
-                    Voltar para o Inicio
+                    Voltar para o Início
                 </a>
                 <a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>" class="btn btn--outline">
-                    Ver Nossos Servicos
+                    Ver Nossos Serviços
                 </a>
                 <a href="<?php echo esc_url( home_url( '/contato' ) ); ?>" class="btn btn--outline">
                     Fale Conosco

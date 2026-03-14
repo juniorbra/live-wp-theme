@@ -15,10 +15,10 @@ $cta_href     = $calendly ?: ALIANCA_WHATSAPP_URL;
     <!-- Hero -->
     <div class="single-hero">
         <div class="container">
-            <nav class="breadcrumb" aria-label="Caminho de navegacao">
+            <nav class="breadcrumb" aria-label="Caminho de navegação">
                 <ol class="breadcrumb__list">
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Servicos</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Serviços</a></li>
                     <li aria-current="page"><?php the_title(); ?></li>
                 </ol>
             </nav>
@@ -62,19 +62,19 @@ $cta_href     = $calendly ?: ALIANCA_WHATSAPP_URL;
 
             <!-- CTA Calendly -->
             <div class="single-cta">
-                <h3>Precisa deste servico?</h3>
+                <h3>Precisa deste serviço?</h3>
                 <p>Agende uma conversa inicial sem compromisso com nosso time.</p>
                 <a href="<?php echo esc_url( $cta_href ); ?>" class="btn btn--accent btn--lg" target="_blank" rel="noopener noreferrer">
-                    Agendar Consulta Tecnica
+                    Agendar Consulta Técnica
                 </a>
             </div>
 
         </article>
 
         <!-- Sidebar: outros servicos -->
-        <aside class="single-sidebar" aria-label="Outros servicos">
+        <aside class="single-sidebar" aria-label="Outros serviços">
             <div class="sidebar-widget">
-                <h3 class="sidebar-widget__title">Outros Servicos</h3>
+                <h3 class="sidebar-widget__title">Outros Serviços</h3>
                 <?php
                 $outros = new WP_Query( [
                     'post_type'      => 'servicos',
@@ -103,7 +103,7 @@ $cta_href     = $calendly ?: ALIANCA_WHATSAPP_URL;
             </div>
 
             <div class="sidebar-widget sidebar-widget--cta">
-                <p>Nao sabe qual servico se encaixa no seu caso?</p>
+                <p>Não sabe qual serviço se encaixa no seu caso?</p>
                 <a href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>" class="btn btn--navy" style="width:100%; justify-content: center;" target="_blank" rel="noopener noreferrer">
                     Fale com um Especialista
                 </a>

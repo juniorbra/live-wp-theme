@@ -102,19 +102,19 @@ get_header();
                 </ul>
                 <?php endif; ?>
 
-                <nav class="archive-pagination" aria-label="Navegacao de artigos">
+                <nav class="archive-pagination" aria-label="Navegação de artigos">
                     <?php the_posts_pagination( [
                         'mid_size'  => 2,
                         'prev_text' => '&larr; Anterior',
-                        'next_text' => 'Proximo &rarr;',
+                        'next_text' => 'Próximo &rarr;',
                     ] ); ?>
                 </nav>
 
             <?php else : ?>
                 <div class="no-results">
                     <h2>Nenhum artigo publicado ainda.</h2>
-                    <p>Em breve publicaremos conteudo tecnico dos nossos especialistas.</p>
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn--navy">Voltar ao Inicio</a>
+                    <p>Em breve publicaremos conteúdo técnico dos nossos especialistas.</p>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn--navy">Voltar ao Início</a>
                 </div>
             <?php endif; ?>
 

@@ -18,13 +18,13 @@ $post_type = get_post_type();
         <div class="container single-hero__inner">
 
             <!-- Breadcrumb simples -->
-            <nav class="breadcrumb" aria-label="<?php esc_attr_e( 'Caminho de navegacao', 'alianca' ); ?>">
+            <nav class="breadcrumb" aria-label="<?php esc_attr_e( 'Caminho de navegação', 'alianca' ); ?>">
                 <ol class="breadcrumb__list">
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
+                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
                     <?php if ( $post_type === 'noticias' ) : ?>
-                        <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Noticias</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Notícias</a></li>
                     <?php elseif ( $post_type === 'servicos' ) : ?>
-                        <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Servicos</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Serviços</a></li>
                     <?php else : ?>
                         <li><a href="<?php echo esc_url( home_url( '/artigos' ) ); ?>">Artigos</a></li>
                         <?php 
@@ -110,7 +110,7 @@ $post_type = get_post_type();
 
             <?php
             wp_link_pages( [
-                'before' => '<nav class="page-links" aria-label="' . esc_attr__( 'Paginas do artigo', 'alianca' ) . '">',
+                'before' => '<nav class="page-links" aria-label="' . esc_attr__( 'Páginas do artigo', 'alianca' ) . '">',
                 'after'  => '</nav>',
             ] );
 
@@ -120,10 +120,10 @@ $post_type = get_post_type();
                 $href = $calendly ?: ALIANCA_WHATSAPP_URL;
             ?>
             <div class="single-cta">
-                <h3>Interessado neste servico?</h3>
-                <p>Agende uma consulta tecnica diretamente com nossos especialistas.</p>
+                <h3>Interessado neste serviço?</h3>
+                <p>Agende uma consulta técnica diretamente com nossos especialistas.</p>
                 <a href="<?php echo esc_url( $href ); ?>" class="btn btn--accent btn--lg" target="_blank" rel="noopener noreferrer">
-                    Agendar Consulta Tecnica
+                    Agendar Consulta Técnica
                 </a>
             </div>
             <?php endif; ?>
@@ -224,7 +224,7 @@ $post_type = get_post_type();
             endif; 
             ?>
 
-            <nav class="post-navigation" aria-label="<?php esc_attr_e( 'Posts anterior e proximo', 'alianca' ); ?>">
+            <nav class="post-navigation" aria-label="<?php esc_attr_e( 'Posts anterior e próximo', 'alianca' ); ?>">
                 <?php
                 $prev = get_previous_post();
                 $next = get_next_post();
@@ -236,7 +236,7 @@ $post_type = get_post_type();
                 </a>
                 <?php endif; if ( $next ) : ?>
                 <a href="<?php echo esc_url( get_permalink( $next ) ); ?>" class="post-nav-link post-nav-link--next" rel="next">
-                    <span class="post-nav-link__label">Proximo</span>
+                    <span class="post-nav-link__label">Próximo</span>
                     <span class="post-nav-link__title"><?php echo esc_html( get_the_title( $next ) ); ?></span>
                 </a>
                 <?php endif; ?>

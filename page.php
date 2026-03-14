@@ -33,7 +33,7 @@ get_header();
 
         <?php
         wp_link_pages( [
-            'before' => '<nav class="page-links" aria-label="' . esc_attr__( 'Paginas do artigo', 'alianca' ) . '">',
+            'before' => '<nav class="page-links" aria-label="' . esc_attr__( 'Páginas do artigo', 'alianca' ) . '">',
             'after'  => '</nav>',
         ] );
         ?>
