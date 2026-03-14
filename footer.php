@@ -90,9 +90,7 @@
                 <?php esc_html_e( 'Todos os direitos reservados.', 'alianca' ); ?>
             </p>
             <ul class="footer-legal-links">
-                <li><a href="<?php echo esc_url( home_url( '/politica-de-privacidade' ) ); ?>">Politica de Privacidade</a></li>
-                <li><a href="<?php echo esc_url( home_url( '/lgpd' ) ); ?>">LGPD</a></li>
-                <li><a href="<?php echo esc_url( home_url( '/termos-de-uso' ) ); ?>">Termos de Uso</a></li>
+                <li><a href="<?php echo esc_url( home_url( '/politica-de-privacidade' ) ); ?>">Política de Privacidade / LGPD</a></li>
             </ul>
         </div>
 

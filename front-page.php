@@ -22,10 +22,10 @@ get_header();
         <div class="container hero__content">
             <span class="hero__eyebrow">Alianca Consultoria e Engenharia</span>
             <h1 class="hero__title" id="hero-heading">
-                Excelencia e Precisao em Laudos de Engenharia e Financas para Litigios Complexos
+                Excelência e Precisão em Laudos de Engenharia e Finanças para Litígios Complexos
             </h1>
             <p class="hero__subtitle">
-                Combinamos rigor cientifico, metodologia academica e profunda experiencia tecnica para defender com solidez os interesses de nossos clientes em disputas judiciais e arbitragens de alta complexidade.
+                Combinamos rigor científico, metodologia acadêmica e profunda experiência técnica para defender com solidez os interesses de nossos clientes em disputas judiciais e arbitragens de alta complexidade.
             </p>
             <div class="hero__actions">
                 <a
@@ -33,10 +33,10 @@ get_header();
                     class="btn btn--accent btn--lg"
                     aria-label="Agendar Consulta Tecnica com um especialista da Alianca"
                 >
-                    Agendar Consulta Tecnica
+                    Agendar Consulta Técnica
                 </a>
                 <a href="#servicos" class="btn btn--ghost btn--lg">
-                    Conhecer Servicos
+                    Conhecer Serviços
                 </a>
             </div>
         </div>
@@ -179,7 +179,11 @@ get_header();
                 </div>
             </div>
 
-            <div class="pillars-grid section">
+            <header class="section__header" style="margin-top: var(--space-12);">
+                <h2 class="section__title">Missão, Visão e Valores</h2>
+            </header>
+
+            <div class="pillars-grid">
                 <!-- Pillars follow here... -->
                 <div class="pillar">
                     <div class="pillar__icon" aria-hidden="true">
@@ -232,10 +236,10 @@ get_header();
         <div class="container">
 
             <header class="section__header">
-                <span class="section__eyebrow">Conhecimento em Acao</span>
-                <h2 class="section__title" id="insights-heading">Insights e Publicacoes</h2>
+                <span class="section__eyebrow">Fique por Dentro</span>
+                <h2 class="section__title" id="insights-heading">Notícias e Eventos</h2>
                 <p class="section__subtitle">
-                    Producao tecnica e reflexoes dos nossos especialistas sobre temas relevantes do setor.
+                    Acompanhe as novidades, ações sociais e eventos da Aliança Consultoria e Engenharia.
                 </p>
             </header>
 
@@ -275,8 +279,8 @@ get_header();
                 <?php endwhile; ?>
             </ul>
             <div class="section__footer">
-                <a href="<?php echo esc_url( home_url( '/artigos' ) ); ?>" class="btn btn--outline">
-                    Ver Todas as Publicacoes
+                <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="btn btn--outline">
+                    Ver Todas as Notícias
                 </a>
             </div>
             <?php
@@ -307,7 +311,7 @@ get_header();
                 >
                     Agendar Consulta Tecnica
                 </a>
-                <a href="mailto:contato@aliancaconsultoria.com.br" class="btn btn--ghost btn--lg">
+                <a href="mailto:comercial@aliancaconsultoria.com.br" class="btn btn--ghost btn--lg">
                     Enviar E-mail
                 </a>
             </div>

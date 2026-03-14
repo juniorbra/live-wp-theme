@@ -30,15 +30,18 @@ if ( is_post_type_archive() ) {
     $archive_desc  = '';
 }
 
-// Sobrescrever descricao com ACF se disponivel
+// Sobrescrever descricao e subtítulo do hero com ACF se disponivel
+$hero_subtitle = '';
 if ( function_exists('get_field') ) {
     $front_id = get_option('page_on_front');
     if ( is_post_type_archive('servicos') ) {
         $custom_desc = get_field('desc_archive_servicos', $front_id);
         if ( $custom_desc ) $archive_desc = $custom_desc;
+        $hero_subtitle = get_field('hero_subtitle_servicos', $front_id);
     } elseif ( is_post_type_archive('clientes') ) {
         $custom_desc = get_field('desc_archive_clientes', $front_id);
         if ( $custom_desc ) $archive_desc = $custom_desc;
+        $hero_subtitle = get_field('hero_subtitle_clientes', $front_id);
     }
 }
 ?>
@@ -61,6 +64,9 @@ if ( function_exists('get_field') ) {
                 ?>
             </p>
             <h1 class="page-hero__title"><?php echo esc_html( $archive_title ); ?></h1>
+            <?php if ( $hero_subtitle ) : ?>
+            <p class="page-hero__subtitle"><?php echo wp_kses_post( $hero_subtitle ); ?></p>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -117,13 +123,15 @@ if ( function_exists('get_field') ) {
 
                         <p class="card__excerpt"><?php the_excerpt(); ?></p>
 
-                        <a
-                            href="<?php the_permalink(); ?>"
-                            class="btn btn--outline btn--sm"
-                            aria-labelledby="post-title-<?php the_ID(); ?>"
-                        >
-                            Ler mais
-                        </a>
+                        <div class="servico-card__actions">
+                            <a
+                                href="<?php the_permalink(); ?>"
+                                class="btn btn--outline btn--sm"
+                                aria-labelledby="post-title-<?php the_ID(); ?>"
+                            >
+                                Ler mais
+                            </a>
+                        </div>
                     </div>
                 </li>
                 <?php endwhile; ?>

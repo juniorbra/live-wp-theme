@@ -11,9 +11,17 @@ get_header();
         <div class="container">
             <span class="section__eyebrow">Areas de Atuacao</span>
             <h1 class="page-hero__title">Nossos Servicos</h1>
-            <p class="page-hero__subtitle">
-                Expertise multidisciplinar com rigor tecnico-cientifico para os casos de maior complexidade no Brasil.
-            </p>
+            <?php
+            $hero_subtitle = '';
+            if ( function_exists('get_field') ) {
+                $front_id      = get_option('page_on_front');
+                $hero_subtitle = get_field('hero_subtitle_servicos', $front_id);
+            }
+            if ( ! $hero_subtitle ) {
+                $hero_subtitle = 'Expertise multidisciplinar com rigor tecnico-cientifico para os casos de maior complexidade no Brasil.';
+            }
+            ?>
+            <p class="page-hero__subtitle"><?php echo wp_kses_post( $hero_subtitle ); ?></p>
         </div>
     </div>
 

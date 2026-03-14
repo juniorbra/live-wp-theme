@@ -11,10 +11,10 @@ get_header();
 
     <div class="page-hero">
         <div class="container">
-            <span class="section__eyebrow">Conhecimento em Acao</span>
-            <h1 class="page-hero__title">Artigos</h1>
+            <span class="section__eyebrow">Fique por Dentro</span>
+            <h1 class="page-hero__title"><?php echo esc_html( get_the_title( get_option('page_for_posts') ) ); ?></h1>
             <p class="page-hero__subtitle">
-                Reflexoes tecnicas, analises de mercado e producao academica dos nossos especialistas.
+                Acompanhe as novidades, ações sociais e eventos da Aliança Consultoria e Engenharia.
             </p>
         </div>
     </div>

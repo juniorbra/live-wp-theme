@@ -37,17 +37,15 @@ $cta_href     = $calendly ?: 'https://calendly.com/alianca-consultoria';
     </div>
     <?php endif; ?>
 
-    <?php if ( has_post_thumbnail() ) : ?>
-    <div class="single-featured-image">
-        <div class="container">
-            <?php the_post_thumbnail( 'alianca-hero', [ 'loading' => 'eager', 'alt' => get_the_title(), 'class' => 'single-featured-image__img' ] ); ?>
-        </div>
-    </div>
-    <?php endif; ?>
-
     <div class="container single-layout">
 
         <article class="single-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+            <?php if ( has_post_thumbnail() ) : ?>
+            <div class="single-featured-image single-featured-image--inline">
+                <?php the_post_thumbnail( 'alianca-hero', [ 'loading' => 'eager', 'alt' => get_the_title(), 'class' => 'single-featured-image__img' ] ); ?>
+            </div>
+            <?php endif; ?>
 
             <?php if ( $metodologia ) : ?>
             <div class="servico-metodologia">

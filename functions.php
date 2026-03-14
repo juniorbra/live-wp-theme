@@ -346,11 +346,25 @@ function alianca_register_acf_fields()
         'title' => 'Textos das Listagens (Páginas Gerais)',
         'fields' => [
             [
+                'key' => 'field_hero_subtitle_servicos',
+                'label' => 'Subtítulo do hero "Nossos Serviços"',
+                'name' => 'hero_subtitle_servicos',
+                'type' => 'textarea',
+                'instructions' => 'Texto curto que aparece logo abaixo do título "Nossos Serviços" no banner azul.',
+            ],
+            [
                 'key' => 'field_desc_archive_servicos',
                 'label' => 'Descrição da página "Todos os Serviços"',
                 'name' => 'desc_archive_servicos',
                 'type' => 'textarea',
                 'instructions' => 'Este texto aparece entre o título azul e a lista de serviços.',
+            ],
+            [
+                'key' => 'field_hero_subtitle_clientes',
+                'label' => 'Subtítulo do hero "Clientes"',
+                'name' => 'hero_subtitle_clientes',
+                'type' => 'textarea',
+                'instructions' => 'Texto curto que aparece logo abaixo do título "Clientes" no banner azul.',
             ],
             [
                 'key' => 'field_desc_archive_clientes',

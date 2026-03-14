@@ -659,7 +659,7 @@ p:last-child {
 
 @media (min-width: 64rem) {
     .social-proof__item {
-        flex: 0 0 calc(25% - var(--space-3));
+        flex: 0 0 calc(21% - var(--space-3));
     }
 }
 
@@ -757,8 +757,9 @@ p:last-child {
 }
 
 .card__title {
-    font-size: var(--text-xl);
+    font-size: var(--text-base);
     color: var(--color-navy);
+    line-height: 1.35;
 }
 
 .card__excerpt {
@@ -1432,14 +1433,21 @@ p:last-child {
 }
 
 .single-featured-image {
-    padding-block: var(--space-8);
+    padding-block: var(--space-6);
     background-color: var(--color-smoke);
+}
+
+.single-featured-image--inline {
+    padding-block: 0;
+    background-color: transparent;
+    margin-bottom: var(--space-8);
 }
 
 .single-featured-image__img {
     border-radius: var(--radius-md);
-    max-height: 480px;
+    max-height: 360px;
     width: 100%;
+    display: block;
     object-fit: cover;
 }
 
@@ -2649,7 +2657,8 @@ p:last-child {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-3);
+    justify-content: center;
+    gap: var(--space-3) var(--space-4);
 }
 
 .setor-tag {
@@ -2666,6 +2675,40 @@ p:last-child {
 /* ============================================================
    PAGE-CONTATO.PHP
    ============================================================ */
+.escritorios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+}
+
+@media (min-width: 48rem) {
+    .escritorios-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.escritorios-grid .escritorio {
+    margin-bottom: 0;
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent);
+    border-bottom: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-white);
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+.escritorios-grid .escritorio:last-of-type {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.contato-calendly--center {
+    max-width: 420px;
+    margin: var(--space-10) auto 0;
+    text-align: center;
+}
+
 .contato-layout {
     display: grid;
     grid-template-columns: 1fr;

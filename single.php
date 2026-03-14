@@ -76,22 +76,19 @@ $post_type = get_post_type();
     </div>
     <?php endif; ?>
 
-    <!-- Imagem destacada -->
-    <?php if ( has_post_thumbnail() ) : ?>
-    <div class="single-featured-image">
-        <div class="container">
-            <?php the_post_thumbnail( 'alianca-hero', [
-                'loading' => 'eager',
-                'class'   => 'single-featured-image__img',
-            ] ); ?>
-        </div>
-    </div>
-    <?php endif; ?>
-
     <!-- Corpo do conteudo -->
     <div class="container single-layout">
 
         <article class="single-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+            <?php if ( has_post_thumbnail() ) : ?>
+            <div class="single-featured-image single-featured-image--inline">
+                <?php the_post_thumbnail( 'alianca-hero', [
+                    'loading' => 'eager',
+                    'class'   => 'single-featured-image__img',
+                ] ); ?>
+            </div>
+            <?php endif; ?>
 
             <?php
             // Campos ACF para Servicos

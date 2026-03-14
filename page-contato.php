@@ -20,14 +20,16 @@ get_header();
         </div>
     </div>
 
-    <!-- Grid principal: escritorios + formulario -->
     <section class="section">
-        <div class="container contato-layout">
+        <div class="container">
 
-            <!-- Coluna esquerda: escritorios (Design Refinado) -->
-            <div class="contato-info">
+            <header class="section__header">
+                <h2 class="section__title">Nossos Escritórios</h2>
+                <p class="section__subtitle">Estamos presentes nas duas maiores cidades do Brasil.</p>
+            </header>
 
-                <h2 class="contato-info__title">Nossos Escritórios</h2>
+            <!-- Escritórios lado a lado -->
+            <div class="escritorios-grid">
 
                 <div class="escritorio">
                     <h3 class="escritorio__cidade"><?php echo get_field('contato_cidade_1') ?: 'Rio de Janeiro'; ?></h3>
@@ -39,11 +41,15 @@ get_header();
                             <?php else: ?>
                                 <a href="tel:+552125447444" class="escritorio__tel">+55 (21) 2544-7444</a>
                             <?php endif; ?>
-                            
                             <?php if($tel2 = get_field('contato_telefone_2')): ?>
                                 <span aria-hidden="true"> | </span>
                                 <a href="tel:<?php echo preg_replace('/\D/', '', $tel2); ?>" class="escritorio__tel"><?php echo esc_html($tel2); ?></a>
                             <?php endif; ?>
+                        </p>
+                        <p>
+                            <a href="mailto:<?php echo get_field('contato_email') ?: 'comercial@aliancaengenharia.com.br'; ?>" class="escritorio__email">
+                                <?php echo get_field('contato_email') ?: 'comercial@aliancaengenharia.com.br'; ?>
+                            </a>
                         </p>
                     </address>
                 </div>
@@ -59,12 +65,6 @@ get_header();
                                 <a href="tel:+551134436221" class="escritorio__tel">+55 (11) 3443-6221</a>
                             <?php endif; ?>
                         </p>
-                    </address>
-                </div>
-
-                <div class="escritorio">
-                    <h3 class="escritorio__cidade">E-mail Comercial</h3>
-                    <address class="escritorio__address">
                         <p>
                             <a href="mailto:<?php echo get_field('contato_email') ?: 'comercial@aliancaengenharia.com.br'; ?>" class="escritorio__email">
                                 <?php echo get_field('contato_email') ?: 'comercial@aliancaengenharia.com.br'; ?>
@@ -73,23 +73,14 @@ get_header();
                     </address>
                 </div>
 
-                <!-- CTA Calendly -->
-                <div class="contato-calendly">
-                    <p class="contato-calendly__label">Prefere agendar diretamente?</p>
-                    <a href="https://calendly.com/alianca-consultoria" class="btn btn--accent" target="_blank" rel="noopener noreferrer">
-                        Agendar Consulta Técnica
-                    </a>
-                </div>
-
             </div>
 
-            <!-- Coluna direita: Conteúdo do Editor (ex: Formulário) -->
-            <div class="contato-form-wrap">
-                <?php if ( have_posts() ) : the_post(); ?>
-                    <div class="entry-content prose">
-                        <?php the_content(); ?>
-                    </div>
-                <?php endif; ?>
+            <!-- CTA Calendly centralizado -->
+            <div class="contato-calendly contato-calendly--center">
+                <p class="contato-calendly__label">Prefere agendar diretamente?</p>
+                <a href="https://calendly.com/alianca-consultoria" class="btn btn--accent" target="_blank" rel="noopener noreferrer">
+                    Agendar Consulta Técnica
+                </a>
             </div>
 
         </div>

@@ -23,7 +23,9 @@ get_header();
     <!-- Missao / Visao / Valores -->
     <section class="section section--alt" aria-labelledby="mvv-heading">
         <div class="container">
-            <h2 class="sr-only" id="mvv-heading">Missao, Visao e Valores</h2>
+            <header class="section__header">
+                <h2 class="section__title" id="mvv-heading">Missão, Visão e Valores</h2>
+            </header>
             <div class="pillars-grid">
 
                 <div class="pillar">
@@ -137,21 +139,21 @@ get_header();
     <section class="section pt-0" aria-labelledby="setores-heading">
         <div class="container">
             <header class="section__header">
-                <span class="section__eyebrow">Presenca Nacional</span>
-                <h2 class="section__title" id="setores-heading">Setores de Atuacao</h2>
-                <p class="section__subtitle">Experiencia comprovada nos segmentos de maior complexidade tecnica e juridica do pais.</p>
+                <span class="section__eyebrow">Presença Nacional</span>
+                <h2 class="section__title" id="setores-heading">Setores de Atuação</h2>
+                <p class="section__subtitle">Experiência comprovada nos segmentos de maior complexidade técnica e jurídica do país.</p>
             </header>
             <ul class="setores-grid" role="list">
                 <li class="setor-tag">Infraestrutura</li>
-                <li class="setor-tag">Portos e Logistica</li>
-                <li class="setor-tag">Barragens e Hidreletricas</li>
+                <li class="setor-tag">Portos e Logística</li>
+                <li class="setor-tag">Barragens e Hidrelétricas</li>
                 <li class="setor-tag">Seguradoras</li>
-                <li class="setor-tag">Fundos de Pensao</li>
-                <li class="setor-tag">Concessoes Rodoviarias</li>
+                <li class="setor-tag">Fundos de Pensão</li>
+                <li class="setor-tag">Concessões Rodoviárias</li>
                 <li class="setor-tag">PPPs</li>
-                <li class="setor-tag">Saneamento Basico</li>
-                <li class="setor-tag">Energia Eletrica</li>
-                <li class="setor-tag">Mineracao</li>
+                <li class="setor-tag">Saneamento Básico</li>
+                <li class="setor-tag">Energia Elétrica</li>
+                <li class="setor-tag">Mineração</li>
             </ul>
         </div>
     </section>
