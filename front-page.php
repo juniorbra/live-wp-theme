@@ -29,10 +29,8 @@ get_header();
             </p>
             <div class="hero__actions">
                 <a
-                    href="https://calendly.com/alianca-consultoria"
+                    href="<?php echo esc_url( home_url( '/contato' ) ); ?>"
                     class="btn btn--accent btn--lg"
-                    target="_blank"
-                    rel="noopener noreferrer"
                     aria-label="Agendar Consulta Tecnica com um especialista da Alianca"
                 >
                     Agendar Consulta Tecnica
@@ -51,12 +49,26 @@ get_header();
         <div class="container">
             <p class="social-proof__label">Confianca comprovada nos setores de maior complexidade:</p>
             <ul class="social-proof__logos" role="list">
-                <li class="social-proof__item">Infraestrutura</li>
-                <li class="social-proof__item">Portos e Logistica</li>
-                <li class="social-proof__item">Barragens e Hidrelétricas</li>
-                <li class="social-proof__item">Seguradoras</li>
-                <li class="social-proof__item">Fundos de Pensao</li>
-                <li class="social-proof__item">Concessoes Rodoviarias</li>
+                <?php
+                $clientes_query = new WP_Query([
+                    'post_type'      => 'clientes',
+                    'posts_per_page' => -1,
+                    'orderby'        => 'title',
+                    'order'          => 'ASC'
+                ]);
+
+                if ($clientes_query->have_posts()) :
+                    while ($clientes_query->have_posts()) : $clientes_query->the_post(); ?>
+                        <li class="social-proof__item"><?php the_title(); ?></li>
+                    <?php endwhile;
+                    wp_reset_postdata();
+                else: 
+                    // Fallback visual caso ainda não existam clientes cadastrados
+                    $fallbacks = ['Logístico', 'Varejo', 'Financeiro', 'Escritórios de Advocacia', 'Seguros', 'Imobiliário', 'Óleo, Gás e Energia'];
+                    foreach ($fallbacks as $fb) : ?>
+                        <li class="social-proof__item"><?php echo esc_html($fb); ?></li>
+                    <?php endforeach;
+                endif; ?>
             </ul>
         </div>
     </section>
@@ -101,7 +113,7 @@ get_header();
                         <h3 class="card__title card__title--servico" id="servico-<?php the_ID(); ?>">
                             <?php the_title(); ?>
                         </h3>
-                        <p class="card__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 15 ) ); ?></p>
+                        <div class="card__footer mt-auto">
                         <a
                             href="<?php the_permalink(); ?>"
                             class="btn btn--outline btn--sm"
@@ -131,7 +143,7 @@ get_header();
                 <li class="card card--servico">
                     <div class="card__body">
                         <h3 class="card__title"><?php echo esc_html( $s['titulo'] ); ?></h3>
-                        <p class="card__excerpt"><?php echo esc_html( $s['desc'] ); ?></p>
+                        <div class="card__footer mt-auto">
                         <a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>" class="btn btn--outline btn--sm">Saiba Mais</a>
                     </div>
                 </li>
@@ -156,7 +168,19 @@ get_header();
                 <h2 class="section__title" id="sobre-heading">Quem Somos</h2>
             </header>
 
-            <div class="pillars-grid">
+            <div class="about-intro grid grid--2-cols grid--align-center">
+                <div class="about-intro__text prose">
+                    <p>Com mais de 20 anos de experiência e atuação nacional, a Aliança Consultoria e Engenharia é referência em consultoria técnica especializada nas áreas de Engenharia, Economia, Finanças e Atuária.</p>
+                    <p>Com escritórios nas duas maiores cidades do Brasil, Rio de Janeiro e São Paulo, entregamos soluções personalizadas para apoiar nossos clientes em processos judiciais, arbitragens, regulação de sinistros e desafios técnicos, sempre com precisão, agilidade e excelência profissional.</p>
+                    <p>Nosso diferencial está em combinar uma equipe altamente qualificada com metodologias avançadas, garantindo resultados assertivos e alinhados às necessidades de nossos clientes.</p>
+                </div>
+                <div class="about-intro__image">
+                    <img src="https://aliancaengenharia.com.br/wp-content/uploads/2025/02/placa-alianca-1170-2.jpg" alt="Logo Aliança Consultoria e Engenharia" class="img-responsive img-rounded shadow-lg">
+                </div>
+            </div>
+
+            <div class="pillars-grid section">
+                <!-- Pillars follow here... -->
                 <div class="pillar">
                     <div class="pillar__icon" aria-hidden="true">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -278,10 +302,8 @@ get_header();
             </div>
             <div class="cta-band__actions">
                 <a
-                    href="https://calendly.com/alianca-consultoria"
+                    href="<?php echo esc_url( home_url( '/contato' ) ); ?>"
                     class="btn btn--accent btn--lg"
-                    target="_blank"
-                    rel="noopener noreferrer"
                 >
                     Agendar Consulta Tecnica
                 </a>

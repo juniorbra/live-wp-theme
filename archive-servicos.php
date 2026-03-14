@@ -17,42 +17,64 @@ get_header();
         </div>
     </div>
 
-    <section class="section" aria-label="Lista de servicos">
+    <?php 
+    $desc = '';
+    if ( function_exists('get_field') ) {
+        $front_id = get_option('page_on_front');
+        $desc = get_field('desc_archive_servicos', $front_id);
+    }
+    if ( ! $desc ) {
+        $desc = get_the_archive_description();
+    }
+    
+    if ( $desc ) : 
+    ?>
+    <div class="archive-intro pb-0">
+        <div class="container container--narrow">
+            <div class="archive-description prose text-center">
+                <?php echo $desc; ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <section class="section pt-0" aria-label="Lista de servicos">
         <div class="container">
 
             <?php if ( have_posts() ) : ?>
 
-                <ul class="servicos-grid" role="list">
+                <ul class="cards-grid" role="list">
                     <?php while ( have_posts() ) : the_post(); ?>
                     <?php
                         $icone     = function_exists( 'get_field' ) ? get_field( 'servico_icone' ) : '';
                         $calendly  = function_exists( 'get_field' ) ? get_field( 'servico_link_calendly' ) : '';
                     ?>
-                    <li class="servico-card" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                        <div class="servico-card__icon" aria-hidden="true">
-                            <?php if ( $icone ) : ?>
-                                <span class="dashicons <?php echo esc_attr( $icone ); ?>"></span>
-                            <?php else : ?>
-                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <rect x="4" y="4" width="10" height="10" rx="2" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.5"/>
-                                    <rect x="18" y="4" width="10" height="10" rx="2" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.5"/>
-                                    <rect x="4" y="18" width="10" height="10" rx="2" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1.5"/>
-                                    <rect x="18" y="18" width="10" height="10" rx="2" fill="currentColor" stroke="currentColor" stroke-width="1.5"/>
-                                </svg>
-                            <?php endif; ?>
+                    <li class="card card--servico" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                        
+                        <?php if ( has_post_thumbnail() ) : ?>
+                        <div class="card__image">
+                            <?php the_post_thumbnail( 'alianca-card', [ 'loading' => 'lazy', 'alt' => get_the_title() ] ); ?>
                         </div>
+                        <?php endif; ?>
 
-                        <div class="servico-card__body">
-                            <h2 class="servico-card__title" id="servico-<?php the_ID(); ?>">
-                                <?php the_title(); ?>
+                        <div class="card__body">
+                            <div class="servico-card__icon-header">
+                                <?php if ( $icone ) : ?>
+                                    <span class="dashicons <?php echo esc_attr( $icone ); ?>"></span>
+                                <?php endif; ?>
+                            </div>
+
+                            <h2 class="card__title" id="servico-title-<?php the_ID(); ?>">
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h2>
-                            <p class="servico-card__excerpt"><?php the_excerpt(); ?></p>
+                            
+                            <p class="card__excerpt"><?php the_excerpt(); ?></p>
 
-                            <div class="servico-card__actions">
+                            <div class="card__actions">
                                 <a
                                     href="<?php the_permalink(); ?>"
                                     class="btn btn--outline btn--sm"
-                                    aria-labelledby="servico-<?php the_ID(); ?>"
+                                    aria-labelledby="servico-title-<?php the_ID(); ?>"
                                 >
                                     Saiba Mais
                                 </a>
@@ -62,19 +84,12 @@ get_header();
                                     class="btn btn--accent btn--sm"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    aria-label="Agendar consulta sobre <?php the_title_attribute(); ?>"
                                 >
-                                    Agendar Consulta
+                                    Agendar
                                 </a>
                                 <?php endif; ?>
                             </div>
                         </div>
-
-                        <?php if ( has_post_thumbnail() ) : ?>
-                        <div class="servico-card__image" aria-hidden="true">
-                            <?php the_post_thumbnail( 'alianca-thumb', [ 'loading' => 'lazy', 'alt' => '' ] ); ?>
-                        </div>
-                        <?php endif; ?>
                     </li>
                     <?php endwhile; ?>
                 </ul>

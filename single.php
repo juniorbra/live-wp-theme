@@ -27,6 +27,12 @@ $post_type = get_post_type();
                         <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Servicos</a></li>
                     <?php else : ?>
                         <li><a href="<?php echo esc_url( home_url( '/artigos' ) ); ?>">Artigos</a></li>
+                        <?php 
+                        $cats = get_the_category();
+                        if ( $cats ) :
+                        ?>
+                        <li><a href="<?php echo esc_url( get_category_link( $cats[0]->term_id ) ); ?>"><?php echo esc_html( $cats[0]->name ); ?></a></li>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <li aria-current="page"><?php the_title(); ?></li>
                 </ol>
@@ -41,7 +47,11 @@ $post_type = get_post_type();
                 </time>
                 <?php if ( $post_type === 'post' ) : ?>
                     <span class="single-meta__sep" aria-hidden="true">·</span>
-                    <span class="single-meta__author"><?php the_author(); ?></span>
+                    <span class="single-meta__author">
+                        <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>">
+                            <?php the_author(); ?>
+                        </a>
+                    </span>
                     <?php
                     $cats = get_the_category();
                     if ( $cats ) :
@@ -56,13 +66,22 @@ $post_type = get_post_type();
         </div>
     </div>
 
+    <?php if ( has_excerpt() ) : ?>
+    <div class="archive-intro">
+        <div class="container container--narrow">
+            <div class="archive-description prose text-center">
+                <?php the_excerpt(); ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <!-- Imagem destacada -->
     <?php if ( has_post_thumbnail() ) : ?>
     <div class="single-featured-image">
         <div class="container">
             <?php the_post_thumbnail( 'alianca-hero', [
                 'loading' => 'eager',
-                'alt'     => get_the_title(),
                 'class'   => 'single-featured-image__img',
             ] ); ?>
         </div>
@@ -112,10 +131,102 @@ $post_type = get_post_type();
             </div>
             <?php endif; ?>
 
+            <?php
+            // Se os comentarios estiverem abertos ou houver pelo menos um comentario, carrega o template
+            if ( comments_open() || get_comments_number() ) :
+                comments_template();
+            endif;
+            ?>
+
         </article>
 
-        <!-- Sidebar / navegacao entre posts -->
-        <aside class="single-sidebar" aria-label="<?php esc_attr_e( 'Navegacao entre posts', 'alianca' ); ?>">
+        <!-- Navegacao entre posts -->
+        <!-- Sidebar / Área Lateral -->
+        <aside class="single-sidebar">
+
+            <?php
+            // Se não for Cliente, mostra os Artigos Relacionados normais
+            if ( $post_type !== 'clientes' ) :
+                // Busca de Artigos Relacionados
+                $related_args = [
+                    'post_type'      => $post_type,
+                    'posts_per_page' => 3, // Quantidade ideal de artigos no sidebar visualmente
+                    'post__not_in'   => [ get_the_ID() ],
+                    'orderby'        => 'rand'
+                ];
+
+                // Prioriza artigos da mesma categoria, se disponível
+                $categories = get_the_category();
+                if ( ! empty( $categories ) ) {
+                    $related_args['category__in'] = wp_list_pluck( $categories, 'term_id' );
+                }
+
+                $related_query = new WP_Query( $related_args );
+
+                if ( $related_query->have_posts() ) :
+                ?>
+                <section class="widget related-posts-widget">
+                    <h3 class="widget-title">Leia também</h3>
+                    <div class="related-posts-list">
+                        <?php while ( $related_query->have_posts() ) : $related_query->the_post(); ?>
+                        <a href="<?php echo esc_url( get_permalink() ); ?>" class="related-post-card">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                            <div class="related-post-card__img">
+                                <?php the_post_thumbnail( 'alianca-thumb' ); ?>
+                            </div>
+                            <?php endif; ?>
+                            <h4 class="related-post-card__title"><?php echo esc_html( get_the_title() ); ?></h4>
+                        </a>
+                        <?php endwhile; wp_reset_postdata(); ?>
+                    </div>
+                </section>
+                <?php 
+                endif; 
+            endif; // Fim verificacao !== clientes
+            ?>
+
+            <?php
+            // Se for Cliente, exibe um widget com outros clientes
+            if ( $post_type === 'clientes' ) :
+                $clientes_args = [
+                    'post_type'      => 'clientes',
+                    'posts_per_page' => 7,
+                    'post__not_in'   => [ get_the_ID() ],
+                    'orderby'        => 'menu_order',
+                    'order'          => 'ASC',
+                ];
+                $clientes_query = new WP_Query( $clientes_args );
+                if ( $clientes_query->have_posts() ) :
+            ?>
+                <div class="sidebar-widget">
+                    <h3 class="sidebar-widget__title">Outros Clientes</h3>
+                    <ul class="sidebar-services-grid">
+                        <?php while ( $clientes_query->have_posts() ) : $clientes_query->the_post(); ?>
+                        <li>
+                        <a href="<?php the_permalink(); ?>" class="sidebar-links__item">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                            <div class="sidebar-services-grid__img">
+                                <?php the_post_thumbnail( 'alianca-thumb' ); ?>
+                            </div>
+                            <?php endif; ?>
+                            <span class="sidebar-services-grid__title"><?php the_title(); ?></span>
+                        </a>
+                        </li>
+                        <?php endwhile; wp_reset_postdata(); ?>
+                    </ul>
+                </div>
+            <?php 
+                endif;
+            endif; 
+            ?>
+
+            <?php 
+            // Mostra os Widgets cadastrados pelo Painel, caso existam
+            if ( is_active_sidebar( 'sidebar-1' ) ) : 
+                dynamic_sidebar( 'sidebar-1' );
+            endif; 
+            ?>
+
             <nav class="post-navigation" aria-label="<?php esc_attr_e( 'Posts anterior e proximo', 'alianca' ); ?>">
                 <?php
                 $prev = get_previous_post();

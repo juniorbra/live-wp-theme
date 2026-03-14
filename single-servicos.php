@@ -23,11 +23,19 @@ $cta_href     = $calendly ?: 'https://calendly.com/alianca-consultoria';
                 </ol>
             </nav>
             <h1 class="single-hero__title"><?php the_title(); ?></h1>
-            <a href="<?php echo esc_url( $cta_href ); ?>" class="btn btn--accent" target="_blank" rel="noopener noreferrer">
-                Agendar Consulta sobre este Servico
-            </a>
+
         </div>
     </div>
+
+    <?php if ( has_excerpt() ) : ?>
+    <div class="archive-intro">
+        <div class="container container--narrow">
+            <div class="archive-description prose text-center">
+                <?php the_excerpt(); ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <?php if ( has_post_thumbnail() ) : ?>
     <div class="single-featured-image">
@@ -72,18 +80,23 @@ $cta_href     = $calendly ?: 'https://calendly.com/alianca-consultoria';
                 <?php
                 $outros = new WP_Query( [
                     'post_type'      => 'servicos',
-                    'posts_per_page' => 5,
+                    'posts_per_page' => 7,
                     'post__not_in'   => [ get_the_ID() ],
                     'orderby'        => 'menu_order',
                     'order'          => 'ASC',
                 ] );
                 if ( $outros->have_posts() ) :
                 ?>
-                <ul class="sidebar-links">
+                <ul class="sidebar-services-grid">
                     <?php while ( $outros->have_posts() ) : $outros->the_post(); ?>
                     <li>
                         <a href="<?php the_permalink(); ?>" class="sidebar-links__item">
-                            <?php the_title(); ?>
+                            <?php if ( has_post_thumbnail() ) : ?>
+                            <div class="sidebar-services-grid__img">
+                                <?php the_post_thumbnail( 'alianca-thumb' ); ?>
+                            </div>
+                            <?php endif; ?>
+                            <span class="sidebar-services-grid__title"><?php the_title(); ?></span>
                         </a>
                     </li>
                     <?php endwhile; ?>

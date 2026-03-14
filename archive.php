@@ -29,6 +29,18 @@ if ( is_post_type_archive() ) {
     $archive_title = __( 'Arquivo', 'alianca' );
     $archive_desc  = '';
 }
+
+// Sobrescrever descricao com ACF se disponivel
+if ( function_exists('get_field') ) {
+    $front_id = get_option('page_on_front');
+    if ( is_post_type_archive('servicos') ) {
+        $custom_desc = get_field('desc_archive_servicos', $front_id);
+        if ( $custom_desc ) $archive_desc = $custom_desc;
+    } elseif ( is_post_type_archive('clientes') ) {
+        $custom_desc = get_field('desc_archive_clientes', $front_id);
+        if ( $custom_desc ) $archive_desc = $custom_desc;
+    }
+}
 ?>
 
 <main id="main-content" class="site-main" role="main">
@@ -40,6 +52,7 @@ if ( is_post_type_archive() ) {
                 <?php
                 if ( is_post_type_archive( 'noticias' ) )        echo 'Noticias';
                 elseif ( is_post_type_archive( 'servicos' ) )    echo 'Servicos';
+                elseif ( is_post_type_archive( 'clientes' ) )    echo 'Clientes';
                 elseif ( is_post_type_archive( 'estudos_de_caso' ) ) echo 'Artigos';
                 elseif ( is_category() )                          echo 'Categoria';
                 elseif ( is_tag() )                               echo 'Tag';
@@ -48,13 +61,20 @@ if ( is_post_type_archive() ) {
                 ?>
             </p>
             <h1 class="page-hero__title"><?php echo esc_html( $archive_title ); ?></h1>
-            <?php if ( $archive_desc ) : ?>
-                <p class="page-hero__subtitle"><?php echo wp_kses_post( $archive_desc ); ?></p>
-            <?php endif; ?>
         </div>
     </div>
 
-    <div class="container section">
+    <?php if ( $archive_desc ) : ?>
+    <div class="archive-intro pb-0">
+        <div class="container container--narrow">
+            <div class="archive-description prose text-center">
+                <?php echo wp_kses_post( $archive_desc ); ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <div class="container section pt-0">
 
         <?php if ( have_posts() ) : ?>
 

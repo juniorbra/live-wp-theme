@@ -15,7 +15,7 @@ get_header();
             <p class="section__eyebrow">Nossa Identidade</p>
             <h1 class="page-hero__title">Quem Somos</h1>
             <p class="page-hero__subtitle">
-                Referencia nacional em pericias complexas de engenharia e financas, com rigor tecnico-cientifico e credibilidade irrefutavel.
+                Referência nacional em consultoria técnica especializada com mais de 20 anos de experiência e atuação em todo o Brasil.
             </p>
         </div>
     </div>
@@ -72,32 +72,26 @@ get_header();
         </div>
     </section>
 
-    <!-- Conteudo da pagina (editor WP) -->
-    <?php if ( have_posts() ) : the_post(); ?>
-    <?php if ( has_post_thumbnail() || get_the_content() ) : ?>
     <section class="section">
-        <div class="container qs-layout">
-
-            <?php if ( has_post_thumbnail() ) : ?>
-            <figure class="qs-image">
-                <?php the_post_thumbnail( 'alianca-hero', [
-                    'loading' => 'lazy',
-                    'alt'     => get_the_title(),
-                    'class'   => 'qs-image__img',
-                ] ); ?>
-            </figure>
-            <?php endif; ?>
-
+        <div class="container">
+            <div class="grid grid--2-cols grid--align-center">
+                <div class="about-intro__text prose">
+                    <p>Com mais de 20 anos de experiência e atuação nacional, a Aliança Consultoria e Engenharia é referência em consultoria técnica especializada nas áreas de Engenharia, Economia, Finanças e Atuária.</p>
+                    <p>Com escritórios nas duas maiores cidades do Brasil, Rio de Janeiro e São Paulo, entregamos soluções personalizadas para apoiar nossos clientes em processos judiciais, arbitragens, regulação de sinistros e desafios técnicos, sempre com precisão, agilidade e excelência profissional.</p>
+                    <p>Nosso diferencial está em combinar uma equipe altamente qualificada com metodologias avançadas, garantindo resultados assertivos e alinhados às necessidades de nossos clientes.</p>
+                </div>
+                <div class="about-intro__image">
+                    <img src="https://aliancaengenharia.com.br/wp-content/uploads/2025/02/placa-alianca-1170-2.jpg" alt="Placa Aliança Consultoria e Engenharia" class="img-responsive img-rounded shadow-lg">
+                </div>
+            </div>
+            
             <?php if ( get_the_content() ) : ?>
             <div class="entry-content prose qs-text">
                 <?php the_content(); ?>
             </div>
             <?php endif; ?>
-
         </div>
     </section>
-    <?php endif; ?>
-    <?php endif; ?>
 
     <!-- Diferenciais -->
     <section class="section section--alt" aria-labelledby="diferenciais-heading">
@@ -140,7 +134,7 @@ get_header();
     </section>
 
     <!-- Setores Atendidos -->
-    <section class="section" aria-labelledby="setores-heading">
+    <section class="section pt-0" aria-labelledby="setores-heading">
         <div class="container">
             <header class="section__header">
                 <span class="section__eyebrow">Presenca Nacional</span>

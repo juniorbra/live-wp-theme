@@ -54,18 +54,22 @@
                 <address class="footer-address">
                     <p>
                         <span class="screen-reader-text">Endereco: </span>
-                        Av. Paulista, 1374 — Sala 1402<br>
-                        Bela Vista, Sao Paulo — SP<br>
-                        CEP 01310-100
+                        <?php echo get_field('contato_endereco_1', 'page_on_front') ?: 'Av. Faria Lima, 3729 — Itaim Bibi<br>Sao Paulo — SP<br>CEP 04538-905'; ?>
                     </p>
                     <p>
-                        <a href="tel:+5511999999999" aria-label="Ligue para Alianca Consultoria">
-                            +55 (11) 9 9999-9999
-                        </a>
+                        <?php if($tel = get_field('contato_telefone_1', 'page_on_front')): ?>
+                            <a href="tel:<?php echo preg_replace('/\D/', '', $tel); ?>" aria-label="Ligue para Alianca Consultoria">
+                                <?php echo esc_html($tel); ?>
+                            </a>
+                        <?php else: ?>
+                            <a href="tel:+551134436221" aria-label="Ligue para Alianca Consultoria">
+                                +55 (11) 3443-6221
+                            </a>
+                        <?php endif; ?>
                     </p>
                     <p>
-                        <a href="mailto:contato@aliancaconsultoria.com.br" aria-label="Envie um e-mail">
-                            contato@aliancaconsultoria.com.br
+                        <a href="mailto:<?php echo get_field('contato_email', 'page_on_front') ?: 'comercial@aliancaengenharia.com.br'; ?>" aria-label="Envie um e-mail">
+                            <?php echo get_field('contato_email', 'page_on_front') ?: 'comercial@aliancaengenharia.com.br'; ?>
                         </a>
                     </p>
                 </address>
