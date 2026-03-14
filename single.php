@@ -117,7 +117,7 @@ $post_type = get_post_type();
             // CTA Calendly para servicos
             if ( $post_type === 'servicos' ) :
                 $calendly = function_exists( 'get_field' ) ? get_field( 'servico_link_calendly' ) : '';
-                $href = $calendly ?: 'https://calendly.com/alianca-consultoria';
+                $href = $calendly ?: ALIANCA_WHATSAPP_URL;
             ?>
             <div class="single-cta">
                 <h3>Interessado neste servico?</h3>

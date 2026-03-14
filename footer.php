@@ -74,8 +74,10 @@
                     </p>
                 </address>
                 <a
-                    href="<?php echo esc_url( home_url( '/contato' ) ); ?>"
+                    href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>"
                     class="btn btn--outline footer-cta-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
                     <?php esc_html_e( 'Agendar Consulta', 'alianca' ); ?>
                 </a>

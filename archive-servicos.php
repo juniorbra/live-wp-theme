@@ -129,7 +129,7 @@ get_header();
                 <p class="cta-band__subtitle">Agende uma consulta inicial sem compromisso com nossos especialistas.</p>
             </div>
             <div class="cta-band__actions">
-                <a href="https://calendly.com/alianca-consultoria" class="btn btn--accent btn--lg" target="_blank" rel="noopener noreferrer">
+                <a href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>" class="btn btn--accent btn--lg" target="_blank" rel="noopener noreferrer">
                     Agendar Consulta Tecnica
                 </a>
             </div>

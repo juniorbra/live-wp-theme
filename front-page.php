@@ -29,8 +29,10 @@ get_header();
             </p>
             <div class="hero__actions">
                 <a
-                    href="<?php echo esc_url( home_url( '/contato' ) ); ?>"
+                    href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>"
                     class="btn btn--accent btn--lg"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="Agendar Consulta Tecnica com um especialista da Alianca"
                 >
                     Agendar Consulta Técnica
@@ -306,8 +308,10 @@ get_header();
             </div>
             <div class="cta-band__actions">
                 <a
-                    href="<?php echo esc_url( home_url( '/contato' ) ); ?>"
+                    href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>"
                     class="btn btn--accent btn--lg"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
                     Agendar Consulta Tecnica
                 </a>

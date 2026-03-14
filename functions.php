@@ -3,6 +3,8 @@
 
 defined('ABSPATH') || exit;
 
+define( 'ALIANCA_WHATSAPP_URL', 'https://wa.me/5521972823512?text=Ol%C3%A1%2C%20estou%20vindo%20do%20site%20da%20Alian%C3%A7a%20e%20quero%20mais%20informa%C3%A7%C3%B5es' );
+
 /* ============================================================
    THEME SETUP
    ============================================================ */
