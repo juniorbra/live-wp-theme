@@ -869,7 +869,7 @@ p:last-child {
 
 .card__title {
     font-family: var(--font-sans);
-    font-size: var(--text-base);
+    font-size: var(--text-lg);
     color: var(--color-navy);
     line-height: 1.35;
 }
@@ -1111,6 +1111,7 @@ p:last-child {
 }
 
 .insight-card__title {
+    font-family: var(--font-sans);
     font-size: var(--text-lg);
     margin: 0;
 }
@@ -2068,7 +2069,8 @@ p:last-child {
 }
 
 .servico-card__title {
-    font-size: var(--text-xl);
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
     color: var(--color-navy);
     margin: 0;
 }
@@ -2257,6 +2259,7 @@ p:last-child {
 }
 
 .noticia-card__title {
+    font-family: var(--font-sans);
     font-size: var(--text-lg);
     color: var(--color-navy);
     margin: 0;
