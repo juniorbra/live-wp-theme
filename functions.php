@@ -176,11 +176,11 @@ function alianca_whatsapp_script() {
           body: JSON.stringify(Object.assign({ code: code }, utms))
         }).catch(function() {});
 
-        msg = 'Olá! (Ref: ' + code + ')';
+        msg = 'Olá! _(Ref: ' + code + ')_';
       }
 
       window.open(
-        'https://wa.me/55219728235122?text=' + encodeURIComponent(msg),
+        'https://wa.me/5521972823512?text=' + encodeURIComponent(msg),
         '_blank'
       );
     }
