@@ -146,6 +146,61 @@ function alianca_cleanup_head()
 }
 add_action('init', 'alianca_cleanup_head');
 
+/* ============================================================
+   WHATSAPP — script de rastreamento UTM + botão flutuante
+   ============================================================ */
+function alianca_whatsapp_script() {
+    ?>
+    <script>
+    function openWhatsApp() {
+      var params = new URLSearchParams(window.location.search);
+      var utms = {
+        utm_source:   params.get('utm_source')   || null,
+        utm_medium:   params.get('utm_medium')   || null,
+        utm_campaign: params.get('utm_campaign') || null,
+        utm_content:  params.get('utm_content')  || null,
+        utm_term:     params.get('utm_term')     || null,
+        gclid:        params.get('gclid')        || null,
+        fbclid:       params.get('fbclid')       || null
+      };
+
+      var hasTracking = Object.keys(utms).some(function(k) { return utms[k] !== null; });
+      var msg = 'Olá, gostaria de mais informações!';
+
+      if (hasTracking) {
+        var code = Math.random().toString(36).substring(2, 8).toUpperCase();
+
+        fetch('https://webhooks.botvance.com.br/webhook/utm-receiver', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.assign({ code: code }, utms))
+        }).catch(function() {});
+
+        msg = 'Olá! (Ref: ' + code + ')';
+      }
+
+      window.open(
+        'https://wa.me/55219728235122?text=' + encodeURIComponent(msg),
+        '_blank'
+      );
+    }
+    </script>
+    <?php
+}
+add_action('wp_head', 'alianca_whatsapp_script');
+
+function alianca_whatsapp_float_button() {
+    ?>
+    <!-- Botão flutuante WhatsApp -->
+    <button class="whatsapp-float" onclick="openWhatsApp()" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#fff" d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.47 1.64 6.36L3 29l6.82-1.6A13 13 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6a10.56 10.56 0 0 1-5.38-1.47l-.38-.23-3.97.93.96-3.86-.25-.4A10.6 10.6 0 1 1 16 26.6zm5.82-7.94c-.32-.16-1.88-.93-2.17-1.03-.29-.1-.5-.16-.71.16-.21.32-.82 1.03-1.01 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.71-1.72-.97-2.35-.26-.62-.52-.53-.71-.54l-.6-.01c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.63 0 1.55 1.13 3.05 1.29 3.26.16.21 2.22 3.39 5.38 4.75.75.32 1.34.52 1.8.66.75.24 1.44.21 1.98.13.6-.09 1.88-.77 2.14-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.6-.37z"/>
+      </svg>
+    </button>
+    <?php
+}
+add_action('wp_body_open', 'alianca_whatsapp_float_button');
+
 /* preconnect + Google Fonts: Cormorant Garamond (display/títulos) + Lato (corpo) */
 function alianca_preconnect_fonts()
 {

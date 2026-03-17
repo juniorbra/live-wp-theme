@@ -4,6 +4,39 @@
    ============================================================ */
 
 /* ============================================================
+   WHATSAPP — botão flutuante
+   ============================================================ */
+.whatsapp-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: #25d366;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,.25);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,.35);
+    outline: none;
+}
+
+.whatsapp-float svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* ============================================================
    ANIMAÇÕES — scroll-triggered via Intersection Observer
    ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
