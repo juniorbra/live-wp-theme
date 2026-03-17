@@ -149,7 +149,7 @@ add_action('init', 'alianca_cleanup_head');
 /* ============================================================
    WHATSAPP — script de rastreamento UTM + botão flutuante
    ============================================================ */
-function alianca_whatsapp_script() {
+function utm_whatsapp_script() {
     ?>
     <script>
     function openWhatsApp() {
@@ -187,9 +187,9 @@ function alianca_whatsapp_script() {
     </script>
     <?php
 }
-add_action('wp_head', 'alianca_whatsapp_script');
+add_action('wp_head', 'utm_whatsapp_script');
 
-function alianca_whatsapp_float_button() {
+function utm_whatsapp_float_button() {
     ?>
     <!-- Botão flutuante WhatsApp -->
     <button class="whatsapp-float" onclick="openWhatsApp()" aria-label="Falar no WhatsApp">
@@ -199,7 +199,7 @@ function alianca_whatsapp_float_button() {
     </button>
     <?php
 }
-add_action('wp_body_open', 'alianca_whatsapp_float_button');
+add_action('wp_body_open', 'utm_whatsapp_float_button');
 
 /* preconnect + Google Fonts: Cormorant Garamond (display/títulos) + Lato (corpo) */
 function alianca_preconnect_fonts()
