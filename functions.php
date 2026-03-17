@@ -176,7 +176,7 @@ function alianca_whatsapp_script() {
           body: JSON.stringify(Object.assign({ code: code }, utms))
         }).catch(function() {});
 
-        msg = 'Olá! _(Ref: ' + code + ')_';
+        msg = 'Olá, gostaria de mais informações! (Ref: _' + code + '_)';
       }
 
       window.open(
