@@ -49,33 +49,40 @@ get_header();
     <section class="section pt-0" aria-label="Lista de servicos">
         <div class="container">
 
-            <?php if ( have_posts() ) : ?>
-
+            <?php if ( have_posts() ) :
+                $servico_icones = [
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l9-4 9 4v6c0 5-4 9-9 10C7 21 3 17 3 12V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8h4l3-5 3 5h4"/><path d="M5 16h4l3 5 3-5h4"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg>',
+                ];
+                $i = 0;
+            ?>
                 <ul class="cards-grid" role="list">
-                    <?php while ( have_posts() ) : the_post(); ?>
-                    <?php
-                        $icone     = function_exists( 'get_field' ) ? get_field( 'servico_icone' ) : '';
+                    <?php while ( have_posts() ) : the_post();
+                        $icone_svg = $servico_icones[ $i % count( $servico_icones ) ];
                         $calendly  = function_exists( 'get_field' ) ? get_field( 'servico_link_calendly' ) : '';
+                        $i++;
                     ?>
                     <li class="card card--servico" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                        
+
                         <?php if ( has_post_thumbnail() ) : ?>
                         <div class="card__image">
                             <?php the_post_thumbnail( 'alianca-card', [ 'loading' => 'lazy', 'alt' => get_the_title() ] ); ?>
+                            <div class="card__icon" aria-hidden="true"><?php echo $icone_svg; ?></div>
                         </div>
                         <?php endif; ?>
 
                         <div class="card__body">
-                            <div class="servico-card__icon-header">
-                                <?php if ( $icone ) : ?>
-                                    <span class="dashicons <?php echo esc_attr( $icone ); ?>"></span>
-                                <?php endif; ?>
-                            </div>
+                            <?php if ( ! has_post_thumbnail() ) : ?>
+                            <div class="card__icon" aria-hidden="true"><?php echo $icone_svg; ?></div>
+                            <?php endif; ?>
 
                             <h2 class="card__title" id="servico-title-<?php the_ID(); ?>">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h2>
-                            
+
                             <p class="card__excerpt"><?php the_excerpt(); ?></p>
 
                             <div class="card__actions">

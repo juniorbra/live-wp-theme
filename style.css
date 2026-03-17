@@ -41,8 +41,9 @@ Tags: corporate, business, professional, minimal, custom-logo, custom-menu, post
     --color-bg-alt:       #F4F6F8;
 
     /* Tipografia */
-    --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-display: "Cormorant Garamond", "Georgia", serif;   /* títulos — elegância técnica */
+    --font-sans:    "Lato", "Segoe UI", system-ui, sans-serif; /* corpo — leiturabilidade */
+    --font-serif:   "Cormorant Garamond", "Georgia", serif;
 
     /* Escala tipográfica fluida */
     --text-xs:   clamp(0.75rem,  0.7rem  + 0.2vw, 0.8125rem);

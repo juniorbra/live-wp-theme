@@ -107,7 +107,7 @@ function alianca_enqueue_scripts()
         filemtime(get_template_directory() . '/assets/css/main.css')
     );
 
-    // JS de navegacao mobile (defer automatico via wp_script_add_data)
+    // JS de navegacao mobile
     wp_enqueue_script(
         'alianca-navigation',
         get_template_directory_uri() . '/assets/js/navigation.js',
@@ -116,6 +116,16 @@ function alianca_enqueue_scripts()
         true
     );
     wp_script_add_data('alianca-navigation', 'defer', true);
+
+    // JS de animações scroll-triggered
+    wp_enqueue_script(
+        'alianca-animations',
+        get_template_directory_uri() . '/assets/js/animations.js',
+        [],
+        filemtime(get_template_directory() . '/assets/js/animations.js'),
+        true
+    );
+    wp_script_add_data('alianca-animations', 'defer', true);
 }
 add_action('wp_enqueue_scripts', 'alianca_enqueue_scripts');
 
@@ -136,12 +146,12 @@ function alianca_cleanup_head()
 }
 add_action('init', 'alianca_cleanup_head');
 
-/* preconnect para fonte Inter via Google Fonts */
+/* preconnect + Google Fonts: Cormorant Garamond (display/títulos) + Lato (corpo) */
 function alianca_preconnect_fonts()
 {
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
-    echo '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">' . "\n";
+    echo '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">' . "\n";
 }
 add_action('wp_head', 'alianca_preconnect_fonts', 1);
 
@@ -379,6 +389,28 @@ function alianca_register_acf_fields()
         'location' => [
             [
                 ['param' => 'post_type', 'operator' => '==', 'value' => 'page'],
+            ],
+        ],
+    ]);
+
+    // Grupo: Imagens da Página Inicial
+    acf_add_local_field_group([
+        'key'   => 'group_front_page_images',
+        'title' => 'Imagens da Página Inicial',
+        'fields' => [
+            [
+                'key'           => 'field_sobre_imagem',
+                'label'         => 'Imagem — Seção Quem Somos',
+                'name'          => 'sobre_imagem',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'instructions'  => 'Imagem exibida ao lado do texto "Quem Somos" na página inicial.',
+            ],
+        ],
+        'location' => [
+            [
+                ['param' => 'page_type', 'operator' => '==', 'value' => 'front_page'],
             ],
         ],
     ]);

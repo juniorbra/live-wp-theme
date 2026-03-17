@@ -19,7 +19,6 @@ $cta_href     = $calendly ?: ALIANCA_WHATSAPP_URL;
                 <ol class="breadcrumb__list">
                     <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>">Serviços</a></li>
-                    <li aria-current="page"><?php the_title(); ?></li>
                 </ol>
             </nav>
             <h1 class="single-hero__title"><?php the_title(); ?></h1>

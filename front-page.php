@@ -18,6 +18,16 @@ get_header();
         id="hero"
         aria-labelledby="hero-heading"
     >
+        <video
+            class="hero__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            aria-hidden="true"
+        >
+            <source src="<?php echo esc_url( home_url( '/wp-content/uploads/2026/03/2325093-Hd-1920-1080-25Fps.mp4' ) ); ?>" type="video/mp4">
+        </video>
         <div class="hero__overlay" aria-hidden="true"></div>
         <div class="container hero__content">
             <span class="hero__eyebrow">Alianca Consultoria e Engenharia</span>
@@ -40,22 +50,21 @@ get_header();
                 <a href="#servicos" class="btn btn--ghost btn--lg">
                     Conhecer Serviços
                 </a>
+                <a
+                    href="https://www.linkedin.com/company/alianca-consultoria-e-engenharia/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Siga a Aliança no LinkedIn"
+                    class="hero__linkedin"
+                >
+                    <img
+                        src="<?php echo esc_url( home_url( '/wp-content/uploads/2025/03/botao-linkedin.png' ) ); ?>"
+                        alt="Siga-nos no LinkedIn"
+                        class="hero__linkedin-img"
+                    >
+                </a>
             </div>
         </div><!-- fecha hero__content -->
-
-        <a
-            href="https://www.linkedin.com/company/alianca-consultoria-e-engenharia/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Siga a Aliança no LinkedIn"
-            class="hero__linkedin"
-        >
-            <img
-                src="<?php echo esc_url( home_url( '/wp-content/uploads/2025/03/botao-linkedin.png' ) ); ?>"
-                alt="Siga-nos no LinkedIn"
-                class="hero__linkedin-img"
-            >
-        </a>
     </section>
 
     <!-- ========================================================
@@ -63,7 +72,7 @@ get_header();
          ======================================================== -->
     <section class="social-proof" aria-label="Setores atendidos">
         <div class="container">
-            <p class="social-proof__label">Confianca comprovada nos setores de maior complexidade:</p>
+            <p class="social-proof__label">Confiança comprovada nos setores de maior complexidade:</p>
             <ul class="social-proof__logos" role="list">
                 <?php
                 $clientes_query = new WP_Query([
@@ -95,7 +104,7 @@ get_header();
     <section class="section section--alt" id="servicos" aria-labelledby="servicos-heading">
         <div class="container container--wide">
 
-            <header class="section__header">
+            <header class="section__header" data-animate="fade-up">
                 <span class="section__eyebrow">Áreas de Atuação</span>
                 <h2 class="section__title" id="servicos-heading">Nossos Serviços</h2>
                 <p class="section__subtitle">
@@ -104,6 +113,20 @@ get_header();
             </header>
 
             <?php
+            // Ícones SVG por índice de ordem (menu_order 0–4)
+            $servico_icones = [
+                // Assistência Técnica Judicial
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l9-4 9 4v6c0 5-4 9-9 10C7 21 3 17 3 12V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+                // Equilíbrio Econômico-Financeiro
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 8h4l3-5 3 5h4"/><path d="M5 16h4l3 5 3-5h4"/></svg>',
+                // Laudos de Engenharia
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
+                // Laudos de Economia e Atuária
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
+                // Gerenciamento de Projetos e Obras
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg>',
+            ];
+
             $servicos_query = new WP_Query( [
                 'post_type'      => 'servicos',
                 'posts_per_page' => 6,
@@ -113,54 +136,61 @@ get_header();
             ] );
 
             if ( $servicos_query->have_posts() ) :
+                $i = 0;
             ?>
-            <ul class="cards-grid cards-grid--servicos" role="list">
-                <?php while ( $servicos_query->have_posts() ) : $servicos_query->the_post(); ?>
+            <ul class="cards-grid cards-grid--servicos" role="list" data-animate-stagger>
+                <?php while ( $servicos_query->have_posts() ) : $servicos_query->the_post();
+                    $icone = $servico_icones[ $i % count( $servico_icones ) ];
+                    $i++;
+                ?>
                 <li class="card card--servico">
                     <?php if ( has_post_thumbnail() ) : ?>
                     <div class="card__image">
-                        <?php the_post_thumbnail( 'alianca-card', [
-                            'loading' => 'lazy',
-                            'alt'     => get_the_title(),
-                        ] ); ?>
+                        <?php the_post_thumbnail( 'alianca-card', [ 'loading' => 'lazy', 'alt' => get_the_title() ] ); ?>
+                        <div class="card__icon" aria-hidden="true"><?php echo $icone; ?></div>
                     </div>
                     <?php endif; ?>
                     <div class="card__body">
+                        <?php if ( ! has_post_thumbnail() ) : ?>
+                        <div class="card__icon" aria-hidden="true"><?php echo $icone; ?></div>
+                        <?php endif; ?>
                         <h3 class="card__title card__title--servico" id="servico-<?php the_ID(); ?>">
                             <?php the_title(); ?>
                         </h3>
                         <div class="card__footer mt-auto">
-                        <a
-                            href="<?php the_permalink(); ?>"
-                            class="btn btn--outline btn--sm"
-                            aria-labelledby="servico-<?php the_ID(); ?>"
-                        >
-                            Saiba Mais
-                        </a>
+                            <a
+                                href="<?php the_permalink(); ?>"
+                                class="btn btn--outline btn--sm"
+                                aria-labelledby="servico-<?php the_ID(); ?>"
+                            >
+                                Saiba Mais
+                            </a>
+                        </div>
                     </div>
                 </li>
                 <?php endwhile; ?>
             </ul>
             <?php
             else :
-                // Fallback estatico enquanto os CPTs nao foram preenchidos
             ?>
             <ul class="cards-grid cards-grid--servicos" role="list">
                 <?php
                 $servicos_default = [
-                    [ 'titulo' => 'Pareceres de Economia e Atuária',           'desc' => 'Modelagem econômica, cálculo atuarial e fórmulas matemáticas aplicadas a litígios financeiros complexos.' ],
-                    [ 'titulo' => 'Pareceres de Engenharia',                   'desc' => 'Laudos periciais técnicos com metodologia rigorosa para disputas em obras de infraestrutura.' ],
-                    [ 'titulo' => 'Assistência Técnica Judicial',              'desc' => 'Suporte especializado a peritos judiciais e apoio técnico em todas as fases processuais.' ],
-                    [ 'titulo' => 'Análise de Equilíbrio Econômico-financeiro','desc' => 'Avaliação de reequilíbrio contratual em concessões, PPPs e contratos de longo prazo.' ],
-                    [ 'titulo' => 'Gerenciamento de Obras Complexas',          'desc' => 'Gestão técnica e financeira de empreendimentos de grande porte com foco em prazo e conformidade.' ],
+                    [ 'titulo' => 'Assistência Técnica Judicial',               'icone' => 0 ],
+                    [ 'titulo' => 'Análise de Equilíbrio Econômico-Financeiro', 'icone' => 1 ],
+                    [ 'titulo' => 'Pareceres de Engenharia',                    'icone' => 2 ],
+                    [ 'titulo' => 'Pareceres de Economia e Atuária',            'icone' => 3 ],
+                    [ 'titulo' => 'Gerenciamento de Projetos e Obras',          'icone' => 4 ],
                 ];
                 foreach ( $servicos_default as $s ) :
                 ?>
                 <li class="card card--servico">
                     <div class="card__body">
-                        <h3 class="card__title"><?php echo esc_html( $s['titulo'] ); ?></h3>
+                        <div class="card__icon" aria-hidden="true"><?php echo $servico_icones[ $s['icone'] ]; ?></div>
+                        <h3 class="card__title card__title--servico"><?php echo esc_html( $s['titulo'] ); ?></h3>
                         <div class="card__footer mt-auto">
-                        <a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>" class="btn btn--outline btn--sm">Saiba Mais</a>
+                            <a href="<?php echo esc_url( home_url( '/servicos' ) ); ?>" class="btn btn--outline btn--sm">Saiba Mais</a>
+                        </div>
                     </div>
                 </li>
                 <?php endforeach; ?>
@@ -176,7 +206,7 @@ get_header();
     <!-- ========================================================
          QUEM SOMOS — Missao, Visao e Valores
          ======================================================== -->
-    <section class="section section--alt" id="sobre" aria-labelledby="sobre-heading">
+    <section class="section" id="sobre" aria-labelledby="sobre-heading">
         <div class="container">
 
             <header class="section__header">
@@ -184,14 +214,46 @@ get_header();
                 <h2 class="section__title" id="sobre-heading">Quem Somos</h2>
             </header>
 
-            <div class="about-intro grid grid--2-cols grid--align-center">
+            <div class="about-intro grid grid--2-cols grid--align-center" data-animate="fade-up">
                 <div class="about-intro__text prose">
                     <p>Com mais de 20 anos de experiência e atuação nacional, a Aliança Consultoria e Engenharia é referência em consultoria técnica especializada nas áreas de Engenharia, Economia, Finanças e Atuária.</p>
                     <p>Com escritórios nas duas maiores cidades do Brasil, Rio de Janeiro e São Paulo, entregamos soluções personalizadas para apoiar nossos clientes em processos judiciais, arbitragens, regulação de sinistros e desafios técnicos, sempre com precisão, agilidade e excelência profissional.</p>
                     <p>Nosso diferencial está em combinar uma equipe altamente qualificada com metodologias avançadas, garantindo resultados assertivos e alinhados às necessidades de nossos clientes.</p>
                 </div>
                 <div class="about-intro__image">
-                    <img src="https://aliancaengenharia.com.br/wp-content/uploads/2025/02/placa-alianca-1170-2.jpg" alt="Logo Aliança Consultoria e Engenharia" class="img-responsive img-rounded shadow-lg">
+                    <?php
+                    $sobre_img_url = '';
+                    $sobre_img_alt = 'Aliança Consultoria e Engenharia';
+
+                    // 1. Campo ACF na página inicial (se ACF Pro estiver ativo)
+                    if ( function_exists( 'get_field' ) ) {
+                        $acf_img = get_field( 'sobre_imagem', get_option( 'page_on_front' ) );
+                        if ( $acf_img ) {
+                            $sobre_img_url = is_array( $acf_img ) ? $acf_img['url'] : $acf_img;
+                            $sobre_img_alt = is_array( $acf_img ) ? $acf_img['alt'] : $sobre_img_alt;
+                        }
+                    }
+
+                    // 2. Imagem destacada da página inicial
+                    if ( ! $sobre_img_url ) {
+                        $front_id = get_option( 'page_on_front' );
+                        if ( $front_id && has_post_thumbnail( $front_id ) ) {
+                            $sobre_img_url = get_the_post_thumbnail_url( $front_id, 'large' );
+                            $sobre_img_alt = get_post_meta( get_post_thumbnail_id( $front_id ), '_wp_attachment_image_alt', true ) ?: $sobre_img_alt;
+                        }
+                    }
+
+                    // 3. Fallback: imagem original
+                    if ( ! $sobre_img_url ) {
+                        $sobre_img_url = 'https://aliancaengenharia.com.br/wp-content/uploads/2025/02/placa-alianca-1170-2.jpg';
+                    }
+                    ?>
+                    <img
+                        src="<?php echo esc_url( $sobre_img_url ); ?>"
+                        alt="<?php echo esc_attr( $sobre_img_alt ); ?>"
+                        class="img-responsive img-rounded shadow-lg"
+                        loading="lazy"
+                    >
                 </div>
             </div>
 
@@ -199,7 +261,7 @@ get_header();
                 <h2 class="section__title">Missão, Visão e Valores</h2>
             </header>
 
-            <div class="pillars-grid">
+            <div class="pillars-grid" data-animate-stagger>
                 <!-- Pillars follow here... -->
                 <div class="pillar">
                     <div class="pillar__icon" aria-hidden="true">
@@ -208,9 +270,9 @@ get_header();
                             <path d="M20 12L28 17V23L20 28L12 23V17L20 12Z" fill="currentColor" opacity="0.2"/>
                         </svg>
                     </div>
-                    <h3 class="pillar__title">Missao</h3>
+                    <h3 class="pillar__title">Missão</h3>
                     <p class="pillar__text">
-                        Prover solucoes técnicas de excelencia em engenharia e financas, contribuindo para a resolucao justa de litigios complexos com integridade, precisao e responsabilidade etica.
+                        Prover soluções técnicas de excelência em engenharia e finanças, contribuindo para a resolução justa de litígios complexos com integridade, precisão e responsabilidade ética.
                     </p>
                 </div>
                 <div class="pillar">
@@ -221,9 +283,9 @@ get_header();
                             <line x1="20" y1="5" x2="20" y2="11" stroke="currentColor" stroke-width="2"/>
                         </svg>
                     </div>
-                    <h3 class="pillar__title">Visao</h3>
+                    <h3 class="pillar__title">Visão</h3>
                     <p class="pillar__text">
-                        Ser reconhecida como a consultoria de referencia nacional em pericias complexas de engenharia e financas, consolidando nossa reputacao de solidez técnica e credibilidade irrefutavel.
+                        Ser reconhecida como a consultoria de referência nacional em perícias complexas de engenharia e finanças, consolidando nossa reputação de solidez técnica e credibilidade irrefutável.
                     </p>
                 </div>
                 <div class="pillar">
@@ -234,10 +296,10 @@ get_header();
                     </div>
                     <h3 class="pillar__title">Valores</h3>
                     <ul class="pillar__values">
-                        <li>Competencia Técnica</li>
-                        <li>Honestidade e Etica</li>
+                        <li>Competência Técnica</li>
+                        <li>Honestidade e Ética</li>
                         <li>Agilidade e Comprometimento</li>
-                        <li>Qualidade sem Concessoes</li>
+                        <li>Qualidade sem Concessões</li>
                     </ul>
                 </div>
             </div>
@@ -251,7 +313,7 @@ get_header();
     <section class="section" id="insights" aria-labelledby="insights-heading">
         <div class="container">
 
-            <header class="section__header">
+            <header class="section__header" data-animate="fade-up">
                 <span class="section__eyebrow">Fique por Dentro</span>
                 <h2 class="section__title" id="insights-heading">Notícias e Eventos</h2>
                 <p class="section__subtitle">
@@ -271,7 +333,7 @@ get_header();
 
             if ( $insights_query->have_posts() ) :
             ?>
-            <ul class="insights-grid" role="list">
+            <ul class="insights-grid" role="list" data-animate-stagger>
                 <?php while ( $insights_query->have_posts() ) : $insights_query->the_post(); ?>
                 <li class="insight-card">
                     <?php if ( has_post_thumbnail() ) : ?>
@@ -281,7 +343,7 @@ get_header();
                     <?php endif; ?>
                     <div class="insight-card__body">
                         <span class="insight-card__type">
-                            <?php echo get_post_type() === 'noticias' ? 'Noticia' : 'Artigo'; ?>
+                            <?php echo get_post_type() === 'noticias' ? 'Notícia' : 'Artigo'; ?>
                         </span>
                         <time class="insight-card__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
                             <?php echo esc_html( get_the_date( 'd/m/Y' ) ); ?>
@@ -310,7 +372,7 @@ get_header();
     <!-- ========================================================
          CTA FINAL — Agendar consulta
          ======================================================== -->
-    <section class="cta-band" aria-labelledby="cta-heading">
+    <section class="cta-band" aria-labelledby="cta-heading" data-animate="fade-up">
         <div class="container cta-band__inner">
             <div class="cta-band__text">
                 <h2 class="cta-band__title" id="cta-heading">

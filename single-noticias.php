@@ -15,17 +15,9 @@ the_post();
                 <ol class="breadcrumb__list">
                     <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/noticias' ) ); ?>">Notícias</a></li>
-                    <li aria-current="page"><?php the_title(); ?></li>
                 </ol>
             </nav>
             <h1 class="single-hero__title"><?php the_title(); ?></h1>
-            <div class="single-meta">
-                <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-                    <?php echo esc_html( get_the_date( 'd/m/Y' ) ); ?>
-                </time>
-                <span aria-hidden="true">·</span>
-                <span><?php the_author(); ?></span>
-            </div>
         </div>
     </div>
 

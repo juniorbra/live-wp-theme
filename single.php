@@ -34,34 +34,10 @@ $post_type = get_post_type();
                         <li><a href="<?php echo esc_url( get_category_link( $cats[0]->term_id ) ); ?>"><?php echo esc_html( $cats[0]->name ); ?></a></li>
                         <?php endif; ?>
                     <?php endif; ?>
-                    <li aria-current="page"><?php the_title(); ?></li>
                 </ol>
             </nav>
 
             <h1 class="single-hero__title"><?php the_title(); ?></h1>
-
-            <?php if ( $post_type === 'post' || $post_type === 'noticias' ) : ?>
-            <div class="single-meta">
-                <time class="single-meta__date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-                    <?php echo esc_html( get_the_date( 'd/m/Y' ) ); ?>
-                </time>
-                <?php if ( $post_type === 'post' ) : ?>
-                    <span class="single-meta__sep" aria-hidden="true">·</span>
-                    <span class="single-meta__author">
-                        <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>">
-                            <?php the_author(); ?>
-                        </a>
-                    </span>
-                    <?php
-                    $cats = get_the_category();
-                    if ( $cats ) :
-                    ?>
-                    <span class="single-meta__sep" aria-hidden="true">·</span>
-                    <span class="single-meta__cat"><?php echo esc_html( $cats[0]->name ); ?></span>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div>
-            <?php endif; ?>
 
         </div>
     </div>
