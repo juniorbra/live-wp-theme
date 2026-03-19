@@ -32,10 +32,10 @@ get_header();
         <div class="container hero__content">
             <span class="hero__eyebrow">Alianca Consultoria e Engenharia</span>
             <h1 class="hero__title" id="hero-heading">
-                Excelência e Precisão em Laudos de Engenharia e Finanças para Litígios Complexos
+                Engenharia e Finanças com Rigor Acadêmico para Litígios de Alta Complexidade
             </h1>
             <p class="hero__subtitle">
-                Combinamos rigor científico, metodologia acadêmica e profunda experiência técnica para defender com solidez os interesses de nossos clientes em disputas judiciais e arbitragens de alta complexidade.
+                Traduzimos complexidade técnica em segurança jurídica. Combinamos metodologia científica e vasta experiência para fundamentar decisões e proteger interesses em arbitragens e processos judiciais estratégicos.
             </p>
             <div class="hero__actions">
                 <a

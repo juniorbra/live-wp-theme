@@ -75,6 +75,11 @@ get_header();
 
             </div>
 
+            <!-- Contact Form 7 -->
+            <div class="contato-form">
+                <?php echo do_shortcode('[contact-form-7 id="a520c1f" title="Contact"]'); ?>
+            </div>
+
             <!-- CTA Calendly centralizado -->
             <div class="contato-calendly contato-calendly--center">
                 <p class="contato-calendly__label">Prefere agendar diretamente?</p>
