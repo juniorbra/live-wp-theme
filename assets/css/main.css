@@ -135,10 +135,6 @@
     padding-top: var(--space-8) !important;
 }
 
-.pb-0 {
-    padding-bottom: 0 !important;
-}
-
 .mt-0 {
     margin-top: 0 !important;
 }
