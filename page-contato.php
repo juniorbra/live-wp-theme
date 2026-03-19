@@ -80,13 +80,6 @@ get_header();
                 <?php echo do_shortcode('[contact-form-7 id="a520c1f" title="Contact"]'); ?>
             </div>
 
-            <!-- CTA Calendly centralizado -->
-            <div class="contato-calendly contato-calendly--center">
-                <p class="contato-calendly__label">Prefere agendar diretamente?</p>
-                <a href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>" class="btn btn--accent" target="_blank" rel="noopener noreferrer">
-                    Agendar Consulta Técnica
-                </a>
-            </div>
 
         </div>
     </section>

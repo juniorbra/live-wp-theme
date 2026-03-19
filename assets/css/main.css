@@ -2949,3 +2949,205 @@ p:last-child {
     padding: var(--space-8);
     box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
 }
+
+/* ============================================================
+   CONTACT FORM 7 — .contato-form wrapper
+   ============================================================ */
+.contato-form {
+    margin-top: var(--space-12);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-10) var(--space-10);
+    box-shadow: 0 4px 24px rgba(13, 35, 64, .07);
+    position: relative;
+}
+
+.contato-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: var(--space-10);
+    right: var(--space-10);
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+    border-radius: 0 0 3px 3px;
+}
+
+/* Fieldset e legend padrão do CF7 */
+.contato-form .wpcf7 {
+    font-family: var(--font-sans);
+}
+
+/* Grid de campos — dois por linha em desktop */
+.contato-form .wpcf7-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+}
+
+@media (min-width: 48rem) {
+    .contato-form .wpcf7-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Campos que ocupam linha inteira */
+    .contato-form .wpcf7-form .wpcf7-form-control-wrap[data-name="your-message"],
+    .contato-form .wpcf7-form p:has(textarea),
+    .contato-form .wpcf7-form p:last-of-type {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Labels */
+.contato-form .wpcf7-form label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-navy);
+    letter-spacing: 0.02em;
+}
+
+/* Parágrafos que envolvem cada campo */
+.contato-form .wpcf7-form > p {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+/* Inputs e selects */
+.contato-form .wpcf7-form input[type="text"],
+.contato-form .wpcf7-form input[type="email"],
+.contato-form .wpcf7-form input[type="tel"],
+.contato-form .wpcf7-form input[type="url"],
+.contato-form .wpcf7-form input[type="number"],
+.contato-form .wpcf7-form select,
+.contato-form .wpcf7-form textarea {
+    width: 100%;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    color: var(--color-text);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.contato-form .wpcf7-form input[type="text"]:focus,
+.contato-form .wpcf7-form input[type="email"]:focus,
+.contato-form .wpcf7-form input[type="tel"]:focus,
+.contato-form .wpcf7-form input[type="url"]:focus,
+.contato-form .wpcf7-form input[type="number"]:focus,
+.contato-form .wpcf7-form select:focus,
+.contato-form .wpcf7-form textarea:focus {
+    border-color: var(--color-navy);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(13, 35, 64, .08);
+}
+
+.contato-form .wpcf7-form input::placeholder,
+.contato-form .wpcf7-form textarea::placeholder {
+    color: var(--color-steel);
+    font-weight: 400;
+}
+
+/* Textarea */
+.contato-form .wpcf7-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* Textarea — linha inteira sempre */
+.contato-form .wpcf7-form p:has(textarea) {
+    grid-column: 1 / -1;
+}
+
+/* Botão de envio */
+.contato-form .wpcf7-form input[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--color-navy);
+    background-color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-8);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    width: auto;
+    margin-top: var(--space-2);
+}
+
+.contato-form .wpcf7-form input[type="submit"]:hover,
+.contato-form .wpcf7-form input[type="submit"]:focus-visible {
+    background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+    box-shadow: 0 4px 16px rgba(200, 168, 75, .35);
+    outline: none;
+}
+
+/* Parágrafo do botão — linha inteira */
+.contato-form .wpcf7-form p:last-of-type {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+/* Mensagens de validação */
+.contato-form .wpcf7-not-valid-tip {
+    font-size: var(--text-xs, 0.75rem);
+    color: #c0392b;
+    margin-top: var(--space-1);
+    display: block;
+}
+
+.contato-form .wpcf7-not-valid {
+    border-color: #c0392b !important;
+}
+
+/* Resposta de envio */
+.contato-form .wpcf7-response-output {
+    grid-column: 1 / -1;
+    margin-top: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+
+.contato-form .wpcf7-mail-sent-ok {
+    background-color: #f0faf4;
+    border-color: #27ae60;
+    color: #1e7e45;
+}
+
+.contato-form .wpcf7-mail-sent-ng,
+.contato-form .wpcf7-aborted {
+    background-color: #fdf3f2;
+    border-color: #c0392b;
+    color: #922b21;
+}
+
+.contato-form .wpcf7-spam-blocked {
+    background-color: #fdf7e3;
+    border-color: #d4a017;
+    color: #7d6008;
+}
+
+/* Spinner de envio */
+.contato-form .wpcf7-spinner {
+    margin-left: var(--space-3);
+    vertical-align: middle;
+}

@@ -93,12 +93,12 @@ $post_type = get_post_type();
             // CTA Calendly para servicos
             if ( $post_type === 'servicos' ) :
                 $calendly = function_exists( 'get_field' ) ? get_field( 'servico_link_calendly' ) : '';
-                $href = $calendly ?: ALIANCA_WHATSAPP_URL;
+                $href = $calendly ?: home_url( '/contato' );
             ?>
             <div class="single-cta">
                 <h3>Interessado neste serviço?</h3>
                 <p>Agende uma consulta técnica diretamente com nossos especialistas.</p>
-                <a href="<?php echo esc_url( $href ); ?>" class="btn btn--accent btn--lg" target="_blank" rel="noopener noreferrer">
+                <a href="<?php echo esc_url( $href ); ?>" class="btn btn--accent btn--lg">
                     Agendar Consulta Técnica
                 </a>
             </div>

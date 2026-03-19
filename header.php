@@ -55,10 +55,8 @@
             ?>
 
             <a
-                href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>"
+                href="<?php echo esc_url( home_url( '/contato' ) ); ?>"
                 class="btn btn--accent nav-cta"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="<?php esc_attr_e( 'Fale com um Especialista', 'alianca' ); ?>"
             >
                 <?php esc_html_e( 'Fale com um Especialista', 'alianca' ); ?>

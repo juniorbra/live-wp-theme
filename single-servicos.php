@@ -7,7 +7,7 @@ the_post();
 
 $metodologia  = function_exists( 'get_field' ) ? get_field( 'servico_metodologia' )   : '';
 $calendly     = function_exists( 'get_field' ) ? get_field( 'servico_link_calendly' ) : '';
-$cta_href     = $calendly ?: ALIANCA_WHATSAPP_URL;
+$cta_href     = $calendly ?: home_url( '/contato' );
 ?>
 
 <main id="main-content" class="site-main" role="main">
@@ -103,7 +103,7 @@ $cta_href     = $calendly ?: ALIANCA_WHATSAPP_URL;
 
             <div class="sidebar-widget sidebar-widget--cta">
                 <p>Não sabe qual serviço se encaixa no seu caso?</p>
-                <a href="<?php echo esc_url( ALIANCA_WHATSAPP_URL ); ?>" class="btn btn--navy" style="width:100%; justify-content: center;" target="_blank" rel="noopener noreferrer">
+                <a href="<?php echo esc_url( home_url( '/contato' ) ); ?>" class="btn btn--navy" style="width:100%; justify-content: center;">
                     Fale com um Especialista
                 </a>
             </div>
