@@ -2953,6 +2953,10 @@ p:last-child {
 /* ============================================================
    CONTACT FORM 7 — .contato-form wrapper
    ============================================================ */
+.contato-form-heading {
+    margin-top: var(--space-16);
+}
+
 .contato-form {
     margin-top: var(--space-12);
     background-color: var(--color-white);

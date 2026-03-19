@@ -76,6 +76,10 @@ get_header();
             </div>
 
             <!-- Contact Form 7 -->
+            <header class="section__header contato-form-heading">
+                <h2 class="section__title">Entre em Contato</h2>
+                <p class="section__subtitle">Preencha o formulário abaixo e retornaremos em breve.</p>
+            </header>
             <div class="contato-form">
                 <?php echo do_shortcode('[contact-form-7 id="a520c1f" title="Contact"]'); ?>
             </div>
