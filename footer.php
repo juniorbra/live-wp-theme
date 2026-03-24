@@ -46,7 +46,7 @@
                 <address class="footer-address">
                     <p>Av. Brg. Faria Lima, 3729, 5º andar<br>Itaim Bibi — São Paulo — SP<br>CEP 04538-905</p>
                     <p><a href="tel:+551134436221">+55 (11) 3443-6221</a></p>
-                    <p><a href="mailto:comercial@aliancaengenharia.com.br">comercial@aliancaengenharia.com.br</a></p>
+                    
                 </address>
             </div>
 
@@ -56,7 +56,7 @@
                 <address class="footer-address">
                     <p>Rua da Assembléia, 58, 6º andar<br>Centro — Rio de Janeiro — RJ<br>CEP 20011-000</p>
                     <p><a href="tel:+552125447444">+55 (21) 2544-7444</a></p>
-                    <p><a href="mailto:comercial@aliancaengenharia.com.br">comercial@aliancaengenharia.com.br</a></p>
+                    
                 </address>
             </div>
 

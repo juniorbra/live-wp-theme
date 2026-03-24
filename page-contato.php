@@ -46,11 +46,7 @@ get_header();
                                 <a href="tel:<?php echo preg_replace('/\D/', '', $tel2); ?>" class="escritorio__tel"><?php echo esc_html($tel2); ?></a>
                             <?php endif; ?>
                         </p>
-                        <p>
-                            <a href="mailto:<?php echo get_field('contato_email') ?: 'comercial@aliancaengenharia.com.br'; ?>" class="escritorio__email">
-                                <?php echo get_field('contato_email') ?: 'comercial@aliancaengenharia.com.br'; ?>
-                            </a>
-                        </p>
+                       
                     </address>
                 </div>
 
@@ -65,11 +61,7 @@ get_header();
                                 <a href="tel:+551134436221" class="escritorio__tel">+55 (11) 3443-6221</a>
                             <?php endif; ?>
                         </p>
-                        <p>
-                            <a href="mailto:<?php echo get_field('contato_email') ?: 'comercial@aliancaengenharia.com.br'; ?>" class="escritorio__email">
-                                <?php echo get_field('contato_email') ?: 'comercial@aliancaengenharia.com.br'; ?>
-                            </a>
-                        </p>
+                       
                     </address>
                 </div>
 
